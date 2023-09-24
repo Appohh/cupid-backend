@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 public class CreateUserRequest {
-
     private String fName;
     private String lName;
     private String birthday;

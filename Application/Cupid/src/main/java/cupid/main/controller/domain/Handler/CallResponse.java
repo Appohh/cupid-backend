@@ -33,6 +33,7 @@ public class CallResponse<T> {
     public boolean Failed(){
         return errorCode != null && errorMessage != null;
     }
+    public boolean hasValue() { return value != null; }
 
 
 }

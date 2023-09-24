@@ -1,27 +1,26 @@
 package cupid.main.controller;
 
-import cupid.main.business.impl.UserServiceImpl;
+import cupid.main.business.impl.SwipeServiceImpl;
 import cupid.main.controller.domain.Handler.CallResponse;
 import cupid.main.controller.domain.Handler.ExceptionHandler;
-import cupid.main.controller.domain.User.CreateUserRequest;
-import cupid.main.controller.domain.User.CreateUserResponse;
-import cupid.main.controller.domain.User.User;
+import cupid.main.controller.domain.Swipe.CreateSwipeRequest;
+import cupid.main.controller.domain.Swipe.CreateSwipeResponse;
+import cupid.main.controller.domain.Swipe.GetSwipesByUserIdResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/swipe")
 @AllArgsConstructor
-public class UserController {
-    private final UserServiceImpl userService;
+public class SwipeController {
+    private final SwipeServiceImpl swipeService;
 
     @PostMapping()
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
-        CallResponse<CreateUserResponse> response = userService.createUser(request);
+    public ResponseEntity<CreateSwipeResponse> createSwipe(@RequestBody @Valid CreateSwipeRequest request) {
+        CallResponse<CreateSwipeResponse> response = swipeService.createCreateSwipe(request);
         if(response.Failed()) {
             //throw http status exception
             ExceptionHandler.handleResponseStatus(response.getErrorCode(), response.getErrorMessage());
@@ -30,13 +29,13 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> getUser(@PathVariable(value = "id") int id) {
-        CallResponse<User> response = userService.getUserById(id);
+    public ResponseEntity<GetSwipesByUserIdResponse> getSwipesByUserId(@PathVariable(value = "id") int id) {
+        CallResponse<GetSwipesByUserIdResponse> response = swipeService.getSwipesByUserId(id);
 
         if (response.Failed()) {
             //throw http status exception
             ExceptionHandler.handleResponseStatus(response.getErrorCode(), response.getErrorMessage());
         }
-            return ResponseEntity.ok().body(response.getValue());
+        return ResponseEntity.ok().body(response.getValue());
     }
 }

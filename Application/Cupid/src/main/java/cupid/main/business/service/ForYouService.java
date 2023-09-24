@@ -1,4 +1,4 @@
-package cupid.main.business;
+package cupid.main.business.service;
 
 public interface ForYouService {
 
