@@ -1,13 +1,12 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.domain.Handler.CallResponse;
 import cupid.main.controller.domain.Swipe.CreateSwipeRequest;
-import cupid.main.controller.domain.Swipe.CreateSwipeResponse;
-import cupid.main.controller.domain.Swipe.GetSwipesByUserIdResponse;
 import cupid.main.controller.domain.Swipe.Swipe;
+
+import java.util.List;
 
 
 public interface SwipeService {
-    CallResponse<CreateSwipeResponse> createCreateSwipe(CreateSwipeRequest request);
-    CallResponse<GetSwipesByUserIdResponse> getSwipesByUserId(Integer id);
+    Swipe createSwipe(Swipe swipe);
+    List<Swipe> getSwipesByUserId(Integer id);
 }

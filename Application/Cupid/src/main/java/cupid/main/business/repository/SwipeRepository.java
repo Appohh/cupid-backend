@@ -6,8 +6,10 @@ import cupid.main.controller.domain.Swipe.CreateSwipeResponse;
 import cupid.main.controller.domain.Swipe.GetSwipesByUserIdResponse;
 import cupid.main.controller.domain.Swipe.Swipe;
 
+import java.util.List;
+
 public interface SwipeRepository {
-    CallResponse<CreateSwipeResponse> createSwipe(CreateSwipeRequest request);
-    CallResponse<GetSwipesByUserIdResponse>getSwipesByUserId(Integer userId);
+    Swipe createSwipe(Swipe swipe);
+    List<Swipe> getSwipesByUserId(Integer userId);
 
 }

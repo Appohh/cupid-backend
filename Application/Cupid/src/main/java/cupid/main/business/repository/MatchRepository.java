@@ -7,8 +7,10 @@ import cupid.main.controller.domain.Match.CreateMatchResponse;
 import cupid.main.controller.domain.Match.GetMatchesByUserIdResponse;
 import cupid.main.controller.domain.Match.Match;
 
+import java.util.List;
+
 public interface MatchRepository {
-    CallResponse<CreateMatchResponse> createMatch(CreateMatchRequest request);
-    CallResponse<Match> getMatchByPair(Integer userId1, Integer userId2);
-    CallResponse<GetMatchesByUserIdResponse>getMatchesByUserId(Integer userId);
+    Match createMatch(Match match);
+    Match getMatchByPair(Integer userId1, Integer userId2);
+   List<Match> getMatchesByUserId(Integer userId);
 }

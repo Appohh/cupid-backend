@@ -14,9 +14,10 @@ public class CreateUserRequest {
     private String birthday;
     private String email;
     private String phone;
-    private int gender;
-    private int preferenceId;
-    private int locationId;
+    private Integer gender;
+    private String password;
+    private Integer preferenceId;
+    private Integer locationId;
     private String pImage;
     private String bio;
 }

@@ -3,9 +3,7 @@ package cupid.main.controller;
 import cupid.main.business.impl.UserServiceImpl;
 import cupid.main.controller.domain.Handler.CallResponse;
 import cupid.main.controller.domain.Handler.ExceptionHandler;
-import cupid.main.controller.domain.User.CreateUserRequest;
-import cupid.main.controller.domain.User.CreateUserResponse;
-import cupid.main.controller.domain.User.User;
+import cupid.main.controller.domain.User.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,22 +19,17 @@ public class UserController {
 
     @PostMapping()
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
-        CallResponse<CreateUserResponse> response = userService.createUser(request);
-        if(response.Failed()) {
-            //throw http status exception
-            ExceptionHandler.handleResponseStatus(response.getErrorCode(), response.getErrorMessage());
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(response.getValue());
+        User createdUser = userService.createUser(CreateUser.fromRequest(request));
+        CreateUserResponse response = CreateUserResponse.builder().id(createdUser.getId()).build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> getUser(@PathVariable(value = "id") int id) {
-        CallResponse<User> response = userService.getUserById(id);
+    public ResponseEntity<GetUserResponse> getUser(@PathVariable(value = "id") int id) {
+        User foundUser = userService.getUserById(id);
+        GetUserResponse response = GetUserResponse.fromUser(foundUser);
 
-        if (response.Failed()) {
-            //throw http status exception
-            ExceptionHandler.handleResponseStatus(response.getErrorCode(), response.getErrorMessage());
-        }
-            return ResponseEntity.ok().body(response.getValue());
+        return ResponseEntity.ok().body(response);
     }
 }

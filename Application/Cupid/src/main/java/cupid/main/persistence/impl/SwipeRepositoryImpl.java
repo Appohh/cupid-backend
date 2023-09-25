@@ -2,6 +2,7 @@ package cupid.main.persistence.impl;
 
 import cupid.main.business.repository.SwipeRepository;
 import cupid.main.controller.domain.Handler.CallResponse;
+import cupid.main.controller.domain.Handler.CustomExceptions.NotFoundException;
 import cupid.main.controller.domain.Swipe.CreateSwipeRequest;
 import cupid.main.controller.domain.Swipe.CreateSwipeResponse;
 import cupid.main.controller.domain.Swipe.GetSwipesByUserIdResponse;
@@ -20,25 +21,25 @@ public class SwipeRepositoryImpl implements SwipeRepository {
     private final List<Swipe> swipes;
     private static int ID_DUMMY = 1;
     @Override
-    public CallResponse<CreateSwipeResponse> createSwipe(CreateSwipeRequest request) {
+    public Swipe createSwipe(Swipe swipe) {
         Swipe createdSwipe = Swipe.builder()
                 .id(ID_DUMMY)
-                .origin_userId(request.getOrigin_userId())
-                .target_userId(request.getTarget_userId())
-                .direction(request.getDirection())
+                .origin_userId(swipe.getOrigin_userId())
+                .target_userId(swipe.getTarget_userId())
+                .direction(swipe.getDirection())
                 .timestamp("Now").build();
 
         if (true){
             ID_DUMMY++;
             swipes.add(createdSwipe);
-            return new CallResponse<>(CreateSwipeResponse.builder().id(createdSwipe.getId()).build());
-        } else return new CallResponse<>(409, "Incorrect resource");
+            return createdSwipe;
+        } else throw new IllegalArgumentException("Incorrect resource provided");
 
 
     }
 
     @Override
-    public CallResponse<GetSwipesByUserIdResponse> getSwipesByUserId(Integer userId) {
+    public List<Swipe> getSwipesByUserId(Integer userId) {
         GetSwipesByUserIdResponse swipeResponse = new GetSwipesByUserIdResponse(new ArrayList<>());
 
         List<Swipe> foundSwipes = swipes.stream()
@@ -46,10 +47,9 @@ public class SwipeRepositoryImpl implements SwipeRepository {
 
 
         if (foundSwipes.isEmpty()) {
-            return new CallResponse<>(404, "No swipes found");
+            throw new NotFoundException("No swipes found");
         }
 
-        swipeResponse.setSwipes(foundSwipes);
-        return new CallResponse<>(swipeResponse);
+        return foundSwipes;
     }
 }
