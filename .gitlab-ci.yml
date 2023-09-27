@@ -8,10 +8,12 @@ stages:
 build:
   stage: build
   script:
+    - cd ./Application/Cupid
     - ./gradlew assemble
 
 test:
   stage: test
   script:
+    - cd ./Application/Cupid
     - ./gradlew test
     - ./gradlew format
