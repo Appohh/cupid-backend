@@ -20,6 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final List<User> users;
     private static int ID_DUMMY = 1;
 
+
     @Override
     public User getUserById(int id) {
         Optional<User> foundUser = users.stream()
@@ -34,6 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     //TODO debug user can still be made with missing fields
+
     @Override
     public User createUser(CreateUser user) {
 
@@ -70,7 +72,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean userExist(String email, String phone) {
-        //TODO test
         return users.stream()
                 .anyMatch(user -> user.getEmail().equals(email) || user.getPhone().equals(phone));
     }
