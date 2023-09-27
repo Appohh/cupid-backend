@@ -68,9 +68,10 @@ public class UserRepositoryImpl implements UserRepository {
         else throw new IllegalArgumentException("Incorrect resource provided");
     }
 
-    //TODO implement userExist()
     @Override
     public boolean userExist(String email, String phone) {
-        return false;
+        //TODO test
+        return users.stream()
+                .anyMatch(user -> user.getEmail().equals(email) || user.getPhone().equals(phone));
     }
 }

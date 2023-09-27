@@ -1,4 +1,4 @@
-package cupid.main.business.impl;
+package cupid.main.persistence.impl;
 
 import cupid.main.business.repository.MatchRepository;
 import cupid.main.controller.domain.Handler.CallResponse;
