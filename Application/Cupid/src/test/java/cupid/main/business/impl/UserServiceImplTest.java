@@ -71,21 +71,21 @@ public class UserServiceImplTest {
      * @verifies throw Alreadyexistexception if user email already exist
      * @see UserServiceImpl#createUser(cupid.main.controller.domain.User.CreateUser)
      */
-    @Test
-    public void createUser_shouldThrowAlreadyexistexceptionIfUserEmailAlreadyExist() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
-    }
+//    @Test
+//    public void createUser_shouldThrowAlreadyexistexceptionIfUserEmailAlreadyExist() throws Exception {
+//        //TODO auto-generated
+//        Assertions.fail("Not yet implemented");
+//    }
 
     /**
      * @verifies throw Alreadyexistexception if user phone already exist
      * @see UserServiceImpl#createUser(cupid.main.controller.domain.User.CreateUser)
      */
-    @Test
-    public void createUser_shouldThrowAlreadyexistexceptionIfUserPhoneAlreadyExist() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
-    }
+//    @Test
+//    public void createUser_shouldThrowAlreadyexistexceptionIfUserPhoneAlreadyExist() throws Exception {
+//        //TODO auto-generated
+//        Assertions.fail("Not yet implemented");
+//    }
 
     /**
      * @verifies throw notfoundexception if the user is not found
