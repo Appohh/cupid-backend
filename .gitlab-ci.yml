@@ -16,4 +16,3 @@ test:
   script:
     - cd ./Application/Cupid
     - ./gradlew test
-    - ./gradlew format
