@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.Handler;
+package cupid.main.controller.dto.Handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

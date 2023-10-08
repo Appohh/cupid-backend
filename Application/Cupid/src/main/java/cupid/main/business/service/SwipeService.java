@@ -1,7 +1,6 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.domain.Swipe.CreateSwipeRequest;
-import cupid.main.controller.domain.Swipe.Swipe;
+import cupid.main.controller.dto.Swipe.Swipe;
 
 import java.util.List;
 

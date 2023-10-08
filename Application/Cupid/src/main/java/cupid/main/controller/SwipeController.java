@@ -1,10 +1,10 @@
 package cupid.main.controller;
 
 import cupid.main.business.service.SwipeService;
-import cupid.main.controller.domain.Swipe.CreateSwipeRequest;
-import cupid.main.controller.domain.Swipe.CreateSwipeResponse;
-import cupid.main.controller.domain.Swipe.GetSwipesByUserIdResponse;
-import cupid.main.controller.domain.Swipe.Swipe;
+import cupid.main.controller.dto.Swipe.CreateSwipeRequest;
+import cupid.main.controller.dto.Swipe.CreateSwipeResponse;
+import cupid.main.controller.dto.Swipe.GetSwipesByUserIdResponse;
+import cupid.main.controller.dto.Swipe.Swipe;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

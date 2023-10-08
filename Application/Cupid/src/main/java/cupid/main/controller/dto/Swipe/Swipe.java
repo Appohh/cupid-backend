@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.Match;
+package cupid.main.controller.dto.Swipe;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Match {
+public class Swipe {
     Integer id;
-    Integer userId1;
-    Integer userId2;
+    Integer origin_userId;
+    Integer target_userId;
+    Integer direction;
     String timestamp;
 }

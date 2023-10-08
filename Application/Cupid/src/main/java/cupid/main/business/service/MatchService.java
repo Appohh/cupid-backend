@@ -1,7 +1,6 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.domain.Match.CreateMatchRequest;
-import cupid.main.controller.domain.Match.Match;
+import cupid.main.controller.dto.Match.Match;
 
 import java.util.List;
 

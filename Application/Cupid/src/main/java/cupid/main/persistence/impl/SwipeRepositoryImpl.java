@@ -1,19 +1,14 @@
 package cupid.main.persistence.impl;
 
 import cupid.main.business.repository.SwipeRepository;
-import cupid.main.controller.domain.Handler.CallResponse;
-import cupid.main.controller.domain.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.domain.Swipe.CreateSwipeRequest;
-import cupid.main.controller.domain.Swipe.CreateSwipeResponse;
-import cupid.main.controller.domain.Swipe.GetSwipesByUserIdResponse;
-import cupid.main.controller.domain.Swipe.Swipe;
-import cupid.main.controller.domain.User.User;
+import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.Swipe.GetSwipesByUserIdResponse;
+import cupid.main.controller.dto.Swipe.Swipe;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @AllArgsConstructor

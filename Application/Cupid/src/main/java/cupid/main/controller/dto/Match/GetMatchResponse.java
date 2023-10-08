@@ -1,7 +1,5 @@
-package cupid.main.controller.domain.Match;
+package cupid.main.controller.dto.Match;
 
-import cupid.main.controller.domain.User.GetUserResponse;
-import cupid.main.controller.domain.User.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.Handler;
+package cupid.main.controller.dto.Handler;
 
 import lombok.Getter;
 

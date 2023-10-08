@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.Match;
+package cupid.main.controller.dto.Match;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

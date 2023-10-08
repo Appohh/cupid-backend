@@ -1,12 +1,8 @@
 package cupid.main.persistence.impl;
 
 import cupid.main.business.repository.MatchRepository;
-import cupid.main.controller.domain.Handler.CallResponse;
-import cupid.main.controller.domain.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.domain.Match.CreateMatchRequest;
-import cupid.main.controller.domain.Match.CreateMatchResponse;
-import cupid.main.controller.domain.Match.GetMatchesByUserIdResponse;
-import cupid.main.controller.domain.Match.Match;
+import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.Match.Match;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -2,9 +2,9 @@ package cupid.main.business.impl;
 
 import cupid.main.business.repository.UserRepository;
 import cupid.main.business.service.UserService;
-import cupid.main.controller.domain.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.domain.User.CreateUser;
-import cupid.main.controller.domain.User.User;
+import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.User.CreateUser;
+import cupid.main.controller.dto.User.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 public class UserServiceImplTest {
     /**
      * @verifies return created user
-     * @see UserServiceImpl#createUser(cupid.main.controller.domain.User.CreateUser)
+     * @see UserServiceImpl#createUser(cupid.main.controller.dto.User.CreateUser)
      */
     @Test
     public void createUser_shouldReturnCreatedUser() throws Exception {
@@ -69,7 +69,7 @@ public class UserServiceImplTest {
 
     /**
      * @verifies throw Alreadyexistexception if user email already exist
-     * @see UserServiceImpl#createUser(cupid.main.controller.domain.User.CreateUser)
+     * @see UserServiceImpl#createUser(cupid.main.controller.dto.User.CreateUser)
      */
 //    @Test
 //    public void createUser_shouldThrowAlreadyexistexceptionIfUserEmailAlreadyExist() throws Exception {
@@ -79,7 +79,7 @@ public class UserServiceImplTest {
 
     /**
      * @verifies throw Alreadyexistexception if user phone already exist
-     * @see UserServiceImpl#createUser(cupid.main.controller.domain.User.CreateUser)
+     * @see UserServiceImpl#createUser(cupid.main.controller.dto.User.CreateUser)
      */
 //    @Test
 //    public void createUser_shouldThrowAlreadyexistexceptionIfUserPhoneAlreadyExist() throws Exception {

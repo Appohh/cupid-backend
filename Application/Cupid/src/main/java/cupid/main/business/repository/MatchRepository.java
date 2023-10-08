@@ -1,11 +1,6 @@
 package cupid.main.business.repository;
 
-import cupid.main.controller.domain.Handler.CallResponse;
-import cupid.main.controller.domain.Match.CreateMatchRequest;
-import cupid.main.controller.domain.Match.CreateMatchResponse;
-
-import cupid.main.controller.domain.Match.GetMatchesByUserIdResponse;
-import cupid.main.controller.domain.Match.Match;
+import cupid.main.controller.dto.Match.Match;
 
 import java.util.List;
 

@@ -1,12 +1,11 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.domain.Handler.CallResponse;
-import cupid.main.controller.domain.User.CreateUser;
-import cupid.main.controller.domain.User.CreateUserResponse;
-import cupid.main.controller.domain.User.User;
-import cupid.main.controller.domain.User.CreateUserRequest;
+import cupid.main.controller.dto.User.CreateUser;
+import cupid.main.controller.dto.User.User;
+import cupid.main.controller.dto.User.UserLogin;
 
 public interface UserService {
     User createUser(CreateUser user);
     User getUserById(Integer id);
+    Boolean userCredentialsValid(UserLogin attempt);
 }

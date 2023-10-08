@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.User;
+package cupid.main.controller.dto.User;
 
 import lombok.Builder;
 import lombok.Data;

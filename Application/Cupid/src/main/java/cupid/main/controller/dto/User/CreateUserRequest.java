@@ -1,9 +1,8 @@
-package cupid.main.controller.domain.User;
+package cupid.main.controller.dto.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder

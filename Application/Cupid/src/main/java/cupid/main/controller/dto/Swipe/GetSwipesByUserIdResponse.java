@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.Swipe;
+package cupid.main.controller.dto.Swipe;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

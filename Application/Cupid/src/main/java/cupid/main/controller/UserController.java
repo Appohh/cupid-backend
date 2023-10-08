@@ -1,15 +1,12 @@
 package cupid.main.controller;
 
 import cupid.main.business.impl.UserServiceImpl;
-import cupid.main.controller.domain.Handler.CallResponse;
-import cupid.main.controller.domain.Handler.ExceptionHandler;
-import cupid.main.controller.domain.User.*;
+import cupid.main.controller.dto.User.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/user")

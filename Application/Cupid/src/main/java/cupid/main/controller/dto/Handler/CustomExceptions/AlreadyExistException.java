@@ -1,4 +1,4 @@
-package cupid.main.controller.domain.Handler.CustomExceptions;
+package cupid.main.controller.dto.Handler.CustomExceptions;
 
 public class AlreadyExistException extends RuntimeException {
     @lombok.Getter

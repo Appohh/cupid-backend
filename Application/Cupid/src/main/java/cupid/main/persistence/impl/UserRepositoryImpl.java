@@ -1,11 +1,8 @@
 package cupid.main.persistence.impl;
 
-import cupid.main.controller.domain.Handler.CallResponse;
-import cupid.main.controller.domain.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.domain.User.CreateUser;
-import cupid.main.controller.domain.User.User;
-import cupid.main.controller.domain.User.CreateUserRequest;
-import cupid.main.controller.domain.User.CreateUserResponse;
+import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.User.CreateUser;
+import cupid.main.controller.dto.User.User;
 import cupid.main.business.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -77,5 +74,11 @@ public class UserRepositoryImpl implements UserRepository {
     public boolean userExist(String email, String phone) {
         return users.stream()
                 .anyMatch(user -> user.getEmail().equals(email) || user.getPhone().equals(phone));
+    }
+
+    @Override
+    public String getUserHashAndSalt(String email) {
+        return null;
+        //TODO: implement hash repo
     }
 }
