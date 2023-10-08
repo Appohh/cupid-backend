@@ -6,7 +6,7 @@ import { createContext , useState } from 'react'
 
 
 import './App.css'
-import Sidebar from './Sidebar';
+import Sidebar from './Components/Sidebar/Sidebar';
 
 export const Context = createContext();
 

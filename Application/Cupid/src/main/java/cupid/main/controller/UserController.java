@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("http://localhost:5173")
 @AllArgsConstructor
 public class UserController {
     private final UserServiceImpl userService;

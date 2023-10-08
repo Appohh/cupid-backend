@@ -1,6 +1,6 @@
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { useContext } from 'react'
-import { Context } from './App.jsx'
+import { Context } from '../../App.jsx'
 
 const Navbar = () => {
 

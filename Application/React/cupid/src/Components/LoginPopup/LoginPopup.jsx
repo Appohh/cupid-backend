@@ -1,7 +1,8 @@
 import '../LoginPopup/LoginPopup.css';
 import React, { useState } from 'react';
+import axios from 'axios'; 
 
-const LoginPopup = ( {onClose }) => {
+const LoginPopup = ({ onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,10 +14,15 @@ const LoginPopup = ( {onClose }) => {
         setPassword(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // TODO: Send login request with email and password
-        console.log('Login request submitted:', { email, password });
+        try {
+            const response = await axios.get('http://localhost:8080/user/1'
+            );
+            console.log('Login request submitted:', response.data);
+        } catch (error) {
+            console.error('Login request failed:', error);
+        }
     };
 
     return (
@@ -39,4 +45,4 @@ const LoginPopup = ( {onClose }) => {
     );
 };
 
-export default LoginPopup
+export default LoginPopup;

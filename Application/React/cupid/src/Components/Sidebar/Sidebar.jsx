@@ -1,8 +1,8 @@
-import Navbar from './Navbar';
-import Logo from './assets/images/logo.webp'
-import LoginPopup from './Components/LoginPopup/LoginPopup'
+import Navbar from '../Navbar/Navbar.jsx';
+import Logo from '../../assets/images/logo.webp'
+import LoginPopup from '../LoginPopup/LoginPopup'
 import { useContext, useState } from 'react'
-import { Context } from './App.jsx'
+import { Context } from '../../App.jsx'
 
 
 

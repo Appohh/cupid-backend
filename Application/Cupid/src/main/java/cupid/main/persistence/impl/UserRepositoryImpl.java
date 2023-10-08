@@ -18,7 +18,7 @@ import java.util.Optional;
 public class UserRepositoryImpl implements UserRepository {
 
     private final List<User> users;
-    private static int ID_DUMMY = 1;
+    private static int ID_DUMMY = 2;
 
 
     @Override
@@ -31,6 +31,9 @@ public class UserRepositoryImpl implements UserRepository {
             throw new NotFoundException("User not found");
         }
 
+//        User firstUser = User.builder().id(1).fName("hello").lName("hi").gender(1).authId(1).bio("mybio").birthday("02-05-2001").locationId(1).email("emiail@ame.nl").phone("543524432").pImage("hi.png").preferenceId(1).build();
+//
+//        return firstUser;
         return foundUser.get();
     }
 
