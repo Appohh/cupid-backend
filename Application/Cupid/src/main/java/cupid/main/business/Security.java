@@ -9,10 +9,10 @@ import java.util.Base64;
 
 public class Security {
 
-    private final PasswordEncoder passwordEncoder;
+    private static PasswordEncoder passwordEncoder = null;
 
     public Security() {
-        this.passwordEncoder = Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
+        passwordEncoder = Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
     /**
      @should hash a password
