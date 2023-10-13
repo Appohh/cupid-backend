@@ -7,5 +7,5 @@ import cupid.main.controller.dto.User.UserLogin;
 public interface UserService {
     User createUser(CreateUser user);
     User getUserById(Integer id);
-    Boolean userCredentialsValid(UserLogin attempt);
+    User authenticateUser(UserLogin attempt);
 }

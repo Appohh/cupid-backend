@@ -7,6 +7,7 @@ public interface UserRepository {
     User getUserById(int id);
     User createUser(CreateUser user);
     boolean userExist(String email, String phone);
+    User getUserByEmail(String email);
     String getUserHashAndSalt(String email);
 
 }

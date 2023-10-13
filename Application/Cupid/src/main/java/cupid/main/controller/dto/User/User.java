@@ -17,7 +17,7 @@ public class User {
     private String email;
     private String phone;
     private int gender;
-    private int authId;
+    private String password;
     private int preferenceId;
     private int locationId;
     private String pImage;

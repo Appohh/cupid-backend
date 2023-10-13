@@ -1,5 +1,6 @@
 package cupid.main.persistence.impl;
 
+import cupid.main.business.Security;
 import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
 import cupid.main.controller.dto.User.CreateUser;
 import cupid.main.controller.dto.User.User;
@@ -39,11 +40,10 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User createUser(CreateUser user) {
 
-        if(true) {
-
             //user create, get id
 
-            //authentication create
+            //hash
+            String password = Security.hashPassword(user.getPassword());
 
             //preference create
 
@@ -55,6 +55,7 @@ public class UserRepositoryImpl implements UserRepository {
                     .email(user.getEmail())
                     .phone(user.getPhone())
                     .gender(user.getGender())
+                    .password(password)
                     .preferenceId(user.getPreferenceId())
                     .locationId(user.getLocationId())
                     .pImage(user.getPImage())
@@ -66,8 +67,6 @@ public class UserRepositoryImpl implements UserRepository {
             ID_DUMMY++;
 
             return createdUser;
-        }
-        else throw new IllegalArgumentException("Incorrect resource provided");
     }
 
     @Override
@@ -77,8 +76,20 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        Optional<User> user = users.stream()
+                .filter(u -> u.getEmail().equals(email))
+                .findFirst();
+
+        return user.orElseThrow(() ->
+                new NotFoundException("User not found for email: " + email));
+    }
+
+
+    @Override
     public String getUserHashAndSalt(String email) {
-        return null;
-        //TODO: implement hash repo
+        User user = getUserByEmail(email);
+
+        return user.getPassword();
     }
 }

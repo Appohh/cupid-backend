@@ -30,4 +30,13 @@ public class UserController {
 
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/authenticate")
+    public ResponseEntity<GetUserResponse> authenticateUser(@RequestBody @Valid UserLogin request) {
+        User authorizedUser = userService.authenticateUser(request);
+
+        GetUserResponse userResponse = GetUserResponse.fromUser(authorizedUser);
+
+        return ResponseEntity.ok().body(userResponse);
+    }
 }

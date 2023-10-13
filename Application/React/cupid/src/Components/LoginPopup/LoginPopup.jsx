@@ -1,28 +1,41 @@
 import '../LoginPopup/LoginPopup.css';
 import React, { useState } from 'react';
-import axios from 'axios'; 
+import axios from 'axios';
+import UserService from '../../Services/UserService';
+
 
 const LoginPopup = ({ onClose }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
+    const Authenticate = () => {
+        UserService.authenticateUser(formData)
+        .then(data => OnSucces(data))
+        .catch(error => console.log('Authentication failed:', error));
+    }
+
+    const OnSucces = (data) => {
+        window.location.href("/foryou")
+        console.log('Authentication successful:', data)
+
+    }
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [name]: value,
+        }));
     };
+    
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await axios.get('http://localhost:8080/user/1'
-            );
-            console.log('Login request submitted:', response.data);
-        } catch (error) {
-            console.error('Login request failed:', error);
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form data submitted:', formData);
+        Authenticate();
     };
 
     return (
@@ -32,10 +45,10 @@ const LoginPopup = ({ onClose }) => {
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <input type="email" placeholder='Your email..' value={email} onChange={handleEmailChange} required />
+                        <input name='email' type="email" placeholder='Your email..' onChange={handleChange} required />
                     </div>
                     <div>
-                        <input type="password" placeholder='Your password..' value={password} onChange={handlePasswordChange} required />
+                        <input name='password' type="password" placeholder='Your password..' onChange={handleChange} required />
                     </div>
                     <h3 className='errors'></h3>
                     <button className="btn" type="submit">Login</button>
