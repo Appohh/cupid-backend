@@ -1,11 +1,11 @@
 package cupid.main.business.impl;
 
-import cupid.main.business.repository.MatchRepository;
-import cupid.main.business.repository.UserRepository;
+import cupid.main.business.adapter.MatchAdapter;
+import cupid.main.business.adapter.UserAdapter;
 import cupid.main.business.service.MatchService;
 import cupid.main.controller.dto.Handler.CustomExceptions.AlreadyExistException;
 import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.dto.Match.Match;
+import cupid.main.domain.Entity.Match;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class MatchServiceImpl implements MatchService {
-    MatchRepository matchRepository;
-    UserRepository userRepository;
+    MatchAdapter matchRepository;
+    UserAdapter userRepository;
     @Override
     public Match createMatch(Match match) {
         if(userRepository.getUserById(match.getUserId1()) == null) {

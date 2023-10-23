@@ -1,6 +1,6 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.dto.Swipe.Swipe;
+import cupid.main.domain.Entity.Swipe;
 
 import java.util.List;
 

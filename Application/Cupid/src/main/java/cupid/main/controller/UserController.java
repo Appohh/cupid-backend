@@ -1,7 +1,16 @@
 package cupid.main.controller;
 
 import cupid.main.business.impl.UserServiceImpl;
+import cupid.main.controller.dto.Preference.GetPreferenceResponse;
+import cupid.main.controller.dto.Preference.UpdatePreferenceRequest;
 import cupid.main.controller.dto.User.*;
+import cupid.main.domain.Dto.Preference.UpdatePreference;
+import cupid.main.domain.Dto.User.CreateUser;
+import cupid.main.domain.Dto.User.CreateUserResponse;
+import cupid.main.domain.Dto.User.GetUserResponse;
+import cupid.main.domain.Dto.User.UserLogin;
+import cupid.main.domain.Entity.Preference;
+import cupid.main.domain.Entity.User;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserServiceImpl userService;
 
-    @PostMapping()
+    @PostMapping("create")
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
         User createdUser = userService.createUser(CreateUser.fromRequest(request));
         CreateUserResponse response = CreateUserResponse.builder().id(createdUser.getId()).build();
@@ -39,4 +48,23 @@ public class UserController {
 
         return ResponseEntity.ok().body(userResponse);
     }
+
+    @PostMapping("validatePreference")
+    public ResponseEntity<GetPreferenceResponse> userPreferenceFilled(@RequestBody @Valid int userId) {
+        User user = userService.getUserById(userId);
+
+        if (userService.userFilledPreference(user)){
+            return ResponseEntity.ok().body(GetPreferenceResponse.fromPreference(userService.getUserPreference(user)));
+        }
+
+        return null;
+    }
+
+    @PostMapping("validatePreference")
+    public ResponseEntity<GetPreferenceResponse> updateUserPreference(@RequestBody @Valid UpdatePreferenceRequest request) {
+        Preference preference = userService.updateUserPreference(userService.getUserById(request.getUserId()), UpdatePreference.fromRequest(request));
+
+        return ResponseEntity.ok().body(GetPreferenceResponse.fromPreference(preference));
+    }
+
 }

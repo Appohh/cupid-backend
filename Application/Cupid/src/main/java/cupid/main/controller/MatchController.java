@@ -2,6 +2,10 @@ package cupid.main.controller;
 
 import cupid.main.business.service.MatchService;
 import cupid.main.controller.dto.Match.*;
+import cupid.main.domain.Dto.Match.CreateMatchResponse;
+import cupid.main.domain.Dto.Match.GetMatchResponse;
+import cupid.main.domain.Dto.Match.GetMatchesByUserIdResponse;
+import cupid.main.domain.Entity.Match;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -42,7 +46,7 @@ public class MatchController {
     }
 
     @GetMapping("/{userId1}/{userId2}")
-    public ResponseEntity<GetMatchResponse> getMatchesByUserId(  @PathVariable("userId1") int userId1, @PathVariable("userId2") int userId2) {
+    public ResponseEntity<GetMatchResponse> getMatchesByUserId(@PathVariable("userId1") int userId1, @PathVariable("userId2") int userId2) {
         Match matchFound = matchService.getMatchByPair(userId1, userId2);
 
         GetMatchResponse response = GetMatchResponse.fromMatch(matchFound);

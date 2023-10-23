@@ -2,9 +2,9 @@ package cupid.main.controller;
 
 import cupid.main.business.service.SwipeService;
 import cupid.main.controller.dto.Swipe.CreateSwipeRequest;
-import cupid.main.controller.dto.Swipe.CreateSwipeResponse;
-import cupid.main.controller.dto.Swipe.GetSwipesByUserIdResponse;
-import cupid.main.controller.dto.Swipe.Swipe;
+import cupid.main.domain.Dto.Swipe.CreateSwipeResponse;
+import cupid.main.domain.Dto.Swipe.GetSwipesByUserIdResponse;
+import cupid.main.domain.Entity.Swipe;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

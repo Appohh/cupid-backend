@@ -1,10 +1,12 @@
 package cupid.main.business.impl;
 
-import cupid.main.business.repository.UserRepository;
+import cupid.main.business.adapter.PreferenceAdapter;
+import cupid.main.business.adapter.UserAdapter;
 import cupid.main.business.service.UserService;
 import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.dto.User.CreateUser;
-import cupid.main.controller.dto.User.User;
+import cupid.main.domain.Dto.User.CreateUser;
+import cupid.main.domain.Entity.Preference;
+import cupid.main.domain.Entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
@@ -17,12 +19,12 @@ import static org.mockito.Mockito.*;
 public class UserServiceImplTest {
     /**
      * @verifies return created user
-     * @see UserServiceImpl#createUser(cupid.main.controller.dto.User.CreateUser)
+     * @see UserServiceImpl#createUser(CreateUser)
      */
     @Test
     public void createUser_shouldReturnCreatedUser() throws Exception {
         // Arrange
-        UserRepository testUserRepo = mock(UserRepository.class);
+        UserAdapter testUserRepo = mock(UserAdapter.class);
         when(testUserRepo.createUser(any())).thenAnswer(
                 i -> {
                     CreateUser user = (CreateUser) i.getArgument(0);
@@ -34,29 +36,41 @@ public class UserServiceImplTest {
                             .email(user.getEmail())
                             .phone(user.getPhone())
                             .gender(user.getGender())
-                            .preferenceId(user.getPreferenceId())
                             .locationId(user.getLocationId())
                             .pImage(user.getPImage())
                             .bio(user.getBio())
                             .build();
                 }
-
         );
 
-        CreateUser request = CreateUser.builder()
+        PreferenceAdapter testPreferenceRepo = mock(PreferenceAdapter.class);
+        when(testPreferenceRepo.createPreference()).thenAnswer(
+                i -> Preference.builder()
+                        .id(1)
+                        .gender(1)
+                        .bodyType(1)
+                        .distance(1)
+                        .location(1)
+                        .height(1)
+                        .ethnicity(1)
+                        .weight(1)
+                        .build()
+        );
+
+
+                CreateUser request = CreateUser.builder()
                 .fName("John")
                 .lName("Doe")
                 .birthday("1990-01-01")
                 .email("john.doe@example.com")
                 .phone("1234567890")
                 .gender(1)
-                .preferenceId(456)
                 .locationId(789)
                 .pImage("profile_image_url.jpg")
                 .bio("This is a mock bio.")
                 .build();
 
-        UserServiceImpl sut = new UserServiceImpl(testUserRepo);
+        UserServiceImpl sut = new UserServiceImpl(testUserRepo, testPreferenceRepo);
         // Act
 
         User sutResponse = sut.createUser(request);
@@ -69,7 +83,7 @@ public class UserServiceImplTest {
 
     /**
      * @verifies throw Alreadyexistexception if user email already exist
-     * @see UserServiceImpl#createUser(cupid.main.controller.dto.User.CreateUser)
+     * @see UserServiceImpl#createUser(CreateUser)
      */
 //    @Test
 //    public void createUser_shouldThrowAlreadyexistexceptionIfUserEmailAlreadyExist() throws Exception {
@@ -79,7 +93,7 @@ public class UserServiceImplTest {
 
     /**
      * @verifies throw Alreadyexistexception if user phone already exist
-     * @see UserServiceImpl#createUser(cupid.main.controller.dto.User.CreateUser)
+     * @see UserServiceImpl#createUser(CreateUser)
      */
 //    @Test
 //    public void createUser_shouldThrowAlreadyexistexceptionIfUserPhoneAlreadyExist() throws Exception {
@@ -94,14 +108,15 @@ public class UserServiceImplTest {
     @Test
     public void getUserById_shouldThrowNotfoundexceptionIfTheUserIsNotFound() throws Exception {
         // Arrange
-        UserRepository mockUserRepo = mock(UserRepository.class);
+        UserAdapter mockUserRepo = mock(UserAdapter.class);
+        PreferenceAdapter mockPreferenceRepo = mock(PreferenceAdapter.class);
 
         int userId = 1;
 
         // Mock the behavior of userRepository.getUserById to return the user
         when(mockUserRepo.getUserById(userId)).thenThrow(NotFoundException.class);
 
-        UserService sut = new UserServiceImpl(mockUserRepo);
+        UserService sut = new UserServiceImpl(mockUserRepo, mockPreferenceRepo);
         // Act
 
         // Assert
@@ -118,7 +133,8 @@ public class UserServiceImplTest {
     @Test
     public void getUserById_shouldReturnTheUserWithTheAppropriateId() throws Exception {
         // Arrange
-        UserRepository mockUserRepo = mock(UserRepository.class);
+        UserAdapter mockUserRepo = mock(UserAdapter.class);
+        PreferenceAdapter mockPreferenceRepo = mock(PreferenceAdapter.class);
 
         int userId = 1;
         User existingUser = User.builder()
@@ -137,7 +153,7 @@ public class UserServiceImplTest {
         // Mock the behavior of userRepository.getUserById to return the user
         when(mockUserRepo.getUserById(userId)).thenReturn(existingUser);
 
-        UserService sut = new UserServiceImpl(mockUserRepo);
+        UserService sut = new UserServiceImpl(mockUserRepo, mockPreferenceRepo);
         // Act
         User result = sut.getUserById(userId);
 

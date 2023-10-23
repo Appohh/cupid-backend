@@ -11,12 +11,12 @@ import Sidebar from './Components/Sidebar/Sidebar';
 export const Context = createContext();
 
 function App() {
-  const [loggedIn, setloggedIn] = useState(false);
+  const [loggedUser, setLoggedUser] = useState(null);
 
 
   return (
     <>
-      <Context.Provider value={[loggedIn, setloggedIn]}>
+      <Context.Provider value={[loggedUser, setLoggedUser]}>
         <div className='mainwrap'>
           <Sidebar />
           <div className='content'>

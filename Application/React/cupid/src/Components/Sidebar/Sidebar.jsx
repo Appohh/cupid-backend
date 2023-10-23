@@ -7,10 +7,10 @@ import { Context } from '../../App.jsx'
 
 
 const Sidebar = ({ }) => {
-  const [loggedIn, setloggedIn] = useContext(Context)
+  const [loggedUser, setLoggedUser] = useContext(Context)
   const [userInfoDropped, setUserInfoDropped] = useState(false)
   const [loginPopupDropped, setLoginPopupDropped] = useState(false)
-
+  console.log("user:", loggedUser)
   function toggleLoginPopup() {
     setLoginPopupDropped(!loginPopupDropped)
   }
@@ -38,7 +38,7 @@ const Sidebar = ({ }) => {
       </div>
 
       <div className='side-user-info'>
-        {loggedIn ? (
+        {loggedUser ? (
           <>
             <div className='user-dropdown-head'>
               <img src={Logo} alt="user-pic" height="35px" width="50px" />
@@ -47,7 +47,7 @@ const Sidebar = ({ }) => {
             <ul id='user-actions'>
               <h3>My account</h3>
               <h3>Preferences</h3>
-              <h3 onClick={() => setloggedIn(!loggedIn)} >Logout</h3>
+              <h3 onClick={() => setLoggedUser(null)} >Logout</h3>
             </ul>
           </>
         ) : (
@@ -57,7 +57,7 @@ const Sidebar = ({ }) => {
 
       <Navbar />
 
-      {loggedIn && (
+      {loggedUser && (
 
         <div className='side-frequent-chats'>
 

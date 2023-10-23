@@ -1,6 +1,6 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.dto.Match.Match;
+import cupid.main.domain.Entity.Match;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package cupid.main.business.impl;
 
-import cupid.main.business.repository.SwipeRepository;
-import cupid.main.business.repository.UserRepository;
+import cupid.main.business.adapter.SwipeAdapter;
+import cupid.main.business.adapter.UserAdapter;
 import cupid.main.business.service.SwipeService;
 import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.dto.Swipe.Swipe;
+import cupid.main.domain.Entity.Swipe;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class SwipeServiceImpl implements SwipeService {
-    SwipeRepository swipeRepository;
-    UserRepository userRepository;
+    SwipeAdapter swipeRepository;
+    UserAdapter userRepository;
     @Override
     public Swipe createSwipe(Swipe swipe) {
         if(userRepository.getUserById(swipe.getOrigin_userId()) == null) {

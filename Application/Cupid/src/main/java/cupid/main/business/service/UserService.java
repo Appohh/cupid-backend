@@ -1,8 +1,8 @@
 package cupid.main.business.service;
 
-import cupid.main.controller.dto.User.CreateUser;
-import cupid.main.controller.dto.User.User;
-import cupid.main.controller.dto.User.UserLogin;
+import cupid.main.domain.Dto.User.CreateUser;
+import cupid.main.domain.Entity.User;
+import cupid.main.domain.Dto.User.UserLogin;
 
 public interface UserService {
     User createUser(CreateUser user);

@@ -2,20 +2,44 @@ import '../LoginPopup/LoginPopup.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import UserService from '../../Services/UserService';
-
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react'
+import { Context } from '../../App.jsx'
 
 const LoginPopup = ({ onClose }) => {
 
+    const navigate = useNavigate();
+    const [loggedUser, setLoggedUser] = useContext(Context)
+
     const Authenticate = () => {
         UserService.authenticateUser(formData)
-        .then(data => OnSucces(data))
-        .catch(error => console.log('Authentication failed:', error));
+            .then(data => OnSucces(data))
+            .catch(error => console.log('Authentication failed:', error));
     }
 
     const OnSucces = (data) => {
-        window.location.href("/foryou")
         console.log('Authentication successful:', data)
+        setLoggedUser(mapToUser(data))
+        navigate('/foryou');
+        onClose()
+    }
 
+    const mapToUser = (dataResponse) => {
+        const userJSON = dataResponse.data;
+
+        const user = {
+            id: userJSON.id,
+            birthday: userJSON.birthday,
+            email: userJSON.email,
+            phone: userJSON.phone,
+            gender: userJSON.gender,
+            bio: userJSON.bio,
+            lname: userJSON.lname,
+            fname: userJSON.fname,
+            pimage: userJSON.pimage,
+        };
+
+        return user
     }
 
     const [formData, setFormData] = useState({
@@ -30,7 +54,7 @@ const LoginPopup = ({ onClose }) => {
             [name]: value,
         }));
     };
-    
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
