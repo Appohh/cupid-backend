@@ -1,14 +1,15 @@
 package cupid.main.business.impl;
 
-import cupid.main.business.adapter.SwipeAdapter;
-import cupid.main.business.adapter.UserAdapter;
+import cupid.main.domain.adapter.SwipeAdapter;
+import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.business.service.SwipeService;
-import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
 import cupid.main.domain.Entity.Swipe;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor

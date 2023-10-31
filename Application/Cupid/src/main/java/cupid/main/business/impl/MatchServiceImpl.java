@@ -1,10 +1,10 @@
 package cupid.main.business.impl;
 
-import cupid.main.business.adapter.MatchAdapter;
-import cupid.main.business.adapter.UserAdapter;
+import cupid.main.domain.adapter.MatchAdapter;
+import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.business.service.MatchService;
-import cupid.main.controller.dto.Handler.CustomExceptions.AlreadyExistException;
-import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.Handler.custom_exceptions.AlreadyExistException;
+import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
 import cupid.main.domain.Entity.Match;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

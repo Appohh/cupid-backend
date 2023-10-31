@@ -50,17 +50,14 @@ public class UserController {
     }
 
     @PostMapping("validatePreference")
-    public ResponseEntity<GetPreferenceResponse> userPreferenceFilled(@RequestBody @Valid int userId) {
-        User user = userService.getUserById(userId);
-
-        if (userService.userFilledPreference(user)){
-            return ResponseEntity.ok().body(GetPreferenceResponse.fromPreference(userService.getUserPreference(user)));
+    public ResponseEntity<Boolean> userPreferenceFilled(@RequestBody @Valid int UserId) {
+        if(userService.userFilledPreference(userService.getUserById(UserId))) {
+            return ResponseEntity.ok(true);
         }
-
         return null;
     }
 
-    @PostMapping("validatePreference")
+    @PostMapping("updatePreference")
     public ResponseEntity<GetPreferenceResponse> updateUserPreference(@RequestBody @Valid UpdatePreferenceRequest request) {
         Preference preference = userService.updateUserPreference(userService.getUserById(request.getUserId()), UpdatePreference.fromRequest(request));
 

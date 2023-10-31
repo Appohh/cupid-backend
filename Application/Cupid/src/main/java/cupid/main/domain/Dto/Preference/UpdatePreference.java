@@ -1,8 +1,6 @@
 package cupid.main.domain.Dto.Preference;
 
 import cupid.main.controller.dto.Preference.UpdatePreferenceRequest;
-import cupid.main.controller.dto.User.CreateUserRequest;
-import cupid.main.domain.Dto.User.CreateUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +10,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class UpdatePreference {
     private Integer gender;
-    private Integer location;
+    private Integer age;
     private Integer distance;
     private Integer bodyType;
     private Integer ethnicity;
@@ -27,7 +25,7 @@ public class UpdatePreference {
                 .gender(request.getGender())
                 .height(request.getHeight())
                 .weight(request.getWeight())
-                .location(request.getLocation())
+                .age(request.getAge())
                 .build();
     }
 }

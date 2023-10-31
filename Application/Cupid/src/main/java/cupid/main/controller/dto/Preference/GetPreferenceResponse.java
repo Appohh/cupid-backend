@@ -1,8 +1,6 @@
 package cupid.main.controller.dto.Preference;
 
-import cupid.main.domain.Dto.User.GetUserResponse;
 import cupid.main.domain.Entity.Preference;
-import cupid.main.domain.Entity.User;
 import lombok.Builder;
 import lombok.Data;
 
@@ -24,7 +22,7 @@ public class GetPreferenceResponse {
                 .gender(preference.getGender())
                 .bodyType(preference.getBodyType())
                 .distance(preference.getDistance())
-                .location(preference.getLocation())
+                .location(preference.getAge())
                 .height(preference.getHeight())
                 .weight(preference.getWeight())
                 .build();

@@ -10,7 +10,7 @@ import lombok.Data;
 public class UpdatePreferenceRequest {
     private Integer userId;
     private Integer gender;
-    private Integer location;
+    private Integer age;
     private Integer distance;
     private Integer bodyType;
     private Integer ethnicity;

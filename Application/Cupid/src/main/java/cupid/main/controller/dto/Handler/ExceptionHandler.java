@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 public class ExceptionHandler {
+
     public static void handleResponseStatus(int errorCode, String errorMessage) {
         HttpStatus status = switch (errorCode) {
             case 400 -> HttpStatus.BAD_REQUEST;

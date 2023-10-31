@@ -1,9 +1,9 @@
 package cupid.main.business.impl;
 
-import cupid.main.business.adapter.PreferenceAdapter;
-import cupid.main.business.adapter.UserAdapter;
+import cupid.main.domain.adapter.PreferenceAdapter;
+import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.business.service.UserService;
-import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
+import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
@@ -50,7 +50,7 @@ public class UserServiceImplTest {
                         .gender(1)
                         .bodyType(1)
                         .distance(1)
-                        .location(1)
+                        .age(1)
                         .height(1)
                         .ethnicity(1)
                         .weight(1)

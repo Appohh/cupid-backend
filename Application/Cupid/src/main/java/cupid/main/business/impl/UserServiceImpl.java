@@ -1,16 +1,16 @@
 package cupid.main.business.impl;
 
 import cupid.main.business.Security;
-import cupid.main.business.adapter.PreferenceAdapter;
+import cupid.main.domain.adapter.PreferenceAdapter;
 import cupid.main.business.service.UserService;
-import cupid.main.controller.dto.Handler.CustomExceptions.AlreadyExistException;
-import cupid.main.controller.dto.Handler.CustomExceptions.NotFoundException;
-import cupid.main.controller.dto.Handler.CustomExceptions.UnAuthorizedException;
+import cupid.main.controller.dto.Handler.custom_exceptions.AlreadyExistException;
+import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
+import cupid.main.controller.dto.Handler.custom_exceptions.UnAuthorizedException;
 import cupid.main.domain.Dto.Preference.UpdatePreference;
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
-import cupid.main.business.adapter.UserAdapter;
+import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.domain.Dto.User.UserLogin;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
             .gender(preference.getGender())
             .bodyType(preference.getBodyType())
             .distance(preference.getDistance())
-            .location(preference.getLocation())
+            .age(preference.getAge())
             .height(preference.getHeight())
             .weight(preference.getWeight())
             .build();

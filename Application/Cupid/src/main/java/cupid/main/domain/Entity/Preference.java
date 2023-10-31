@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Preference {
     private Integer id;
     private Integer gender;
-    private Integer location;
+    private Integer age;
     private Integer distance;
     private Integer bodyType;
     private Integer ethnicity;
