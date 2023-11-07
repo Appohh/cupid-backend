@@ -1,4 +1,4 @@
-package cupid.main.persistence.impl.domain_action;
+package cupid.main.persistence.domain_action;
 
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.domain_action.UserDomainAction;

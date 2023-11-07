@@ -23,16 +23,12 @@ k
 ;src/main/java/cupid/main/business/impl/UserServiceImpl.java,6\0\60021837efebb915d31ae287f85cc62d8cd7732a
 f
 6src/main/java/cupid/main/domain/Entity/Preference.java,6\7\678f7b75e1f1580bd9c945bd397d1372e1812c39
-r
-Bsrc/main/java/cupid/main/persistence/impl/SwipeFakeRepository.java,e\f\ef6d4d9ee6530ca9c123b0c1f879515efa09b577
 u
 Esrc/main/java/cupid/main/controller/dto/Swipe/CreateSwipeRequest.java,4\f\4ff45d1d674f1e161abfcbc4a7c75d922b3462ba
 u
 Esrc/main/java/cupid/main/controller/dto/Match/CreateMatchRequest.java,b\8\b8a2c2a3c99c670d2ef78e92701ec75abbf8df71
 r
 Bsrc/main/java/cupid/main/domain/Dto/Match/CreateMatchResponse.java,e\8\e88539076e78b94f9657daeeee0ef119de0c2df3
-r
-Bsrc/main/java/cupid/main/persistence/impl/MatchFakeRepository.java,7\2\72fdfa37d56a5de70780cb467c108299a4539cb5
 u
 Esrc/main/java/cupid/main/controller/dto/Handler/ExceptionHandler.java,f\b\fb3a9d21e88e286c6fd237370397495797873ee2
 a
@@ -51,8 +47,6 @@ l
 <src/main/java/cupid/main/business/impl/SwipeServiceImpl.java,8\d\8d00faafe2b72c9c5cee7c072a907f4f1fcc35c0
 Y
 )src/main/java/cupid/main/config/Cors.java,8\b\8b781af5b4f7a153114d8f439489eb1b428efc2f
-w
-Gsrc/main/java/cupid/main/persistence/impl/PreferenceFakeRepository.java,1\8\1835d638f961b78fcdcb859ba4e37b3f744ac838
 c
 3src/test/java/cupid/main/business/SecurityTest.java,1\3\13dbc5e1a1bc4089c4713f9b4779255af586b8dc
 h
@@ -73,8 +67,6 @@ m
 0src/main/java/cupid/main/domain/Entity/User.java,6\4\649083c5914b277097a5e3048cded86bb260a469
 s
 Csrc/main/java/cupid/main/controller/dto/User/CreateUserRequest.java,b\f\bf7f7a2e144f388902f64e4ec846c50a5208778e
-q
-Asrc/main/java/cupid/main/persistence/impl/UserFakeRepository.java,2\8\28afcde05264ef0b290868dfdbc5e5b30853bd4c
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 :
@@ -120,3 +112,15 @@ Qsrc/main/java/cupid/main/persistence/impl/fake_repository/UserFakeRepository.ja
 Qsrc/main/java/cupid/main/persistence/impl/domain_action/UserDomainActionImpl.java,2\b\2be736b9b881162b60c25618e10dc0ec9d12cd6a
 ƒ
 Ssrc/main/java/cupid/main/persistence/impl/repository/mysql/MySQLUserRepository.java,7\6\762ee6e38cea28b7b3b387bb52b783b65b732202
+h
+8src/main/java/cupid/main/persistence/iJpa/iMatchJpa.java,4\7\47d91301d24bdf1044cf49d66f7c8b2276d16511
+y
+Isrc/main/java/cupid/main/persistence/mysql/MySQLPreferenceRepository.java,3\b\3b4bb8e8fe4dfe3d06167d5ee71682e05df13ca4
+t
+Dsrc/main/java/cupid/main/persistence/mysql/MySQLMatchRepository.java,9\9\9921209f3cf5ce57a1a5a366804b2f00416785d5
+t
+Dsrc/main/java/cupid/main/persistence/mysql/MySQLSwipeRepository.java,e\b\eb7c927f7d3daeb3bb2bb9bf22d26c6ddb6d11be
+h
+8src/main/java/cupid/main/persistence/iJpa/iSwipeJpa.java,1\a\1a29962176c86f800abc7e569ced5cf26d6a343c
+s
+Csrc/main/java/cupid/main/persistence/mysql/MySQLUserRepository.java,6\a\6a785552c43605485564264591890b4eceb400a2

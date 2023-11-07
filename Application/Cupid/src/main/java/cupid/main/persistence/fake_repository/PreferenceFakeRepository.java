@@ -1,4 +1,4 @@
-package cupid.main.persistence.impl.fake_repository;
+package cupid.main.persistence.fake_repository;
 
 import cupid.main.domain.adapter.PreferenceAdapter;
 import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;

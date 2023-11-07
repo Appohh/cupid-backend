@@ -1,4 +1,4 @@
-package cupid.main.persistence.impl.repository.mysql;
+package cupid.main.persistence.mysql;
 
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.User;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Profile("mysql")
 public class MySQLUserRepository implements UserAdapter  {
+
 
     @Override
     public User getUserById(int id) {
