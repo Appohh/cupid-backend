@@ -100,18 +100,6 @@ h
 8src/main/java/cupid/main/domain/adapter/UserAdapter.java,4\2\42919cd99d4de7016f332d5b366d99225ea37727
 s
 Csrc/main/java/cupid/main/domain/domain_action/UserDomainAction.java,b\2\b2be0675e35f9ba8e4302f8685cd49f4f157f6f6
-Ç
-Rsrc/main/java/cupid/main/persistence/impl/fake_repository/SwipeFakeRepository.java,f\b\fbc2f9a950aa9b2e732e310223a14ffb8b97dc50
-á
-Wsrc/main/java/cupid/main/persistence/impl/fake_repository/PreferenceFakeRepository.java,5\f\5f481a537e01cd71ceb9d465e16d67bbf292a2ea
-Ç
-Rsrc/main/java/cupid/main/persistence/impl/fake_repository/MatchFakeRepository.java,6\d\6d233dde473e83791b21bbbc3c5cd6bac16b685c
-Å
-Qsrc/main/java/cupid/main/persistence/impl/fake_repository/UserFakeRepository.java,e\b\ebf1ae58f04a4d178fc39400f4b272d1e4c6e7a1
-Å
-Qsrc/main/java/cupid/main/persistence/impl/domain_action/UserDomainActionImpl.java,2\b\2be736b9b881162b60c25618e10dc0ec9d12cd6a
-É
-Ssrc/main/java/cupid/main/persistence/impl/repository/mysql/MySQLUserRepository.java,7\6\762ee6e38cea28b7b3b387bb52b783b65b732202
 h
 8src/main/java/cupid/main/persistence/iJpa/iMatchJpa.java,4\7\47d91301d24bdf1044cf49d66f7c8b2276d16511
 t
@@ -124,3 +112,7 @@ h
 8src/main/java/cupid/main/persistence/iJpa/iSwipeJpa.java,1\a\1a29962176c86f800abc7e569ced5cf26d6a343c
 s
 Csrc/main/java/cupid/main/persistence/mysql/MySQLUserRepository.java,6\a\6a785552c43605485564264591890b4eceb400a2
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
+}
+Msrc/main/java/cupid/main/persistence/fake_repository/SwipeFakeRepository.java,a\9\a9bf6f30fd1eef5bded5400017fa885f1fc8eb01
