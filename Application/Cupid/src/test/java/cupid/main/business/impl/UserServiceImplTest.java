@@ -55,7 +55,6 @@ public class UserServiceImplTest {
                         .age(1)
                         .height(1)
                         .ethnicity(1)
-                        .weight(1)
                         .build()
         );
 

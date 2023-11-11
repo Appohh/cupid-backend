@@ -28,7 +28,7 @@ public class MySQLPreferenceRepository implements PreferenceAdapter {
 
     @Override
     public Boolean PreferenceFilled(Preference preference) {
-        return null;
+        return false;
     }
 
     @Override

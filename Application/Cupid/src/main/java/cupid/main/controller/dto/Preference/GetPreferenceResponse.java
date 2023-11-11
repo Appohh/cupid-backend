@@ -14,8 +14,6 @@ public class GetPreferenceResponse {
     private Integer bodyType;
     private Integer ethnicity;
     private Integer height;
-    private Integer weight;
-
     public static GetPreferenceResponse fromPreference(Preference preference) {
         return GetPreferenceResponse.builder()
                 .id(preference.getId())
