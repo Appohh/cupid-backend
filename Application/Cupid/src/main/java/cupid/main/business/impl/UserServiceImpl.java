@@ -12,6 +12,7 @@ import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.domain.Dto.User.UserLogin;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +22,18 @@ public class UserServiceImpl implements UserService {
     UserAdapter userRepository;
     PreferenceAdapter preferenceRepository;
 
+
     @Override
+    @Transactional
     public User createUser(CreateUser user) {
         if (userRepository.userExist(user.getEmail(), user.getPhone())) {
             throw new AlreadyExistException("User already exists");
         }
 
-        User createdUser = userRepository.createUser(user);
-        createdUser.setPreferenceId(preferenceRepository.createPreference().getId());
+        Preference preference = preferenceRepository.createPreference();
 
-        return createdUser;
+
+        return userRepository.createUser(user, preference.getId());
     }
 
     @Override
@@ -52,6 +55,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.getUserByEmail(attempt.getEmail());
     }
 
+    @Override
+    public User updateUserPreference(UpdatePreference preference, Integer userId) {
+
+    return null;
+    }
+
     public Preference updateUserPreference(User user, UpdatePreference preference){
         Preference newPreference = Preference.builder()
             .id(user.getPreferenceId())
@@ -60,7 +69,6 @@ public class UserServiceImpl implements UserService {
             .distance(preference.getDistance())
             .age(preference.getAge())
             .height(preference.getHeight())
-            .weight(preference.getWeight())
             .build();
         preferenceRepository.UpdatePreference(newPreference);
         return newPreference;

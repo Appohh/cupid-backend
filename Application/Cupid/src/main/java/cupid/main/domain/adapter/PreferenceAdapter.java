@@ -7,4 +7,5 @@ public interface PreferenceAdapter {
     Preference getPreferenceById(int id);
     Boolean PreferenceFilled(Preference preference);
     void UpdatePreference(Preference preference);
+    Preference setPreference(Integer userId, Integer preferenceId);
 }

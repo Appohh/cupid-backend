@@ -24,7 +24,6 @@ public class GetPreferenceResponse {
                 .distance(preference.getDistance())
                 .location(preference.getAge())
                 .height(preference.getHeight())
-                .weight(preference.getWeight())
                 .build();
     }
 }

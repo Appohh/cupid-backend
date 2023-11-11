@@ -15,7 +15,6 @@ public class UpdatePreference {
     private Integer bodyType;
     private Integer ethnicity;
     private Integer height;
-    private Integer weight;
 
     public static UpdatePreference fromRequest(UpdatePreferenceRequest request) {
         return UpdatePreference.builder()
@@ -24,7 +23,6 @@ public class UpdatePreference {
                 .ethnicity(request.getEthnicity())
                 .gender(request.getGender())
                 .height(request.getHeight())
-                .weight(request.getWeight())
                 .age(request.getAge())
                 .build();
     }

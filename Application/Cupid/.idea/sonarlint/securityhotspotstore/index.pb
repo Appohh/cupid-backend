@@ -116,3 +116,15 @@ A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 }
 Msrc/main/java/cupid/main/persistence/fake_repository/SwipeFakeRepository.java,a\9\a9bf6f30fd1eef5bded5400017fa885f1fc8eb01
+g
+7src/main/java/cupid/main/persistence/iJpa/iUserJpa.java,e\5\e594c2d1dce1a3281add64184b71401d4b95fde6
+‚
+Rsrc/main/java/cupid/main/persistence/fake_repository/PreferenceFakeRepository.java,2\b\2bca716f77e3f4b6252f45b8aaecf6c6e210ebfa
+}
+Msrc/main/java/cupid/main/persistence/fake_repository/MatchFakeRepository.java,8\f\8f7dced000cbcf786a5de1ab57dddfd53380e58b
+Y
+)src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
+|
+Lsrc/main/java/cupid/main/persistence/fake_repository/UserFakeRepository.java,7\8\786f1143741ad561712847c5bab18c8ed1dcd4f2
+m
+=src/main/java/cupid/main/persistence/iJpa/iPreferenceJpa.java,5\4\5479fe9ef3047ba1fe86ef645e4fec1616fbbe8d

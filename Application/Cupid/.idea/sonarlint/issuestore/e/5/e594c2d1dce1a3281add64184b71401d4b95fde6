@@ -1,0 +1,6 @@
+
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¸Á-8¾ÉòÆ»1
+r	java:S114
+"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(íÆ’øÿÿÿÿ8¿ÉòÆ»1
+d
+java:S1128"BRemove this unused import 'cupid.main.domain.Dto.User.CreateUser'.(òƒÃíüÿÿÿÿ8ßí„Ç»1

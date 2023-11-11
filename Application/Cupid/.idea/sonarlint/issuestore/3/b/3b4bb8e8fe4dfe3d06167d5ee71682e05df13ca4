@@ -1,5 +1,7 @@
 
-ó
-java:S1186"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»€’Ô
-C
-java:S2447"-Null is returned but a "Boolean" is expected.(•πÔç
+û
+java:S1186#"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»€’Ô8‡Æ© ª1
+J
+java:S2447"-Null is returned but a "Boolean" is expected.(•πÔç8‰Æ© ª1
+c
+java:S1128"ARemove this unused import 'cupid.main.persistence.iJpa.iUserJpa'.(Á©Ù»¯ˇˇˇˇ8Ìä∂Òª1

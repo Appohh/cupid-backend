@@ -49,8 +49,7 @@ public class PreferenceFakeRepository implements PreferenceAdapter {
                 && preference.getDistance() != null
                 && preference.getBodyType() != null
                 && preference.getEthnicity() != null
-                && preference.getHeight() != null
-                && preference.getWeight() != null;
+                && preference.getHeight() != null;
     }
 
     @Override
@@ -63,5 +62,10 @@ public class PreferenceFakeRepository implements PreferenceAdapter {
         preferences.removeIf(pref -> pref.getId().equals(preference.getId()));
         preferences.add(preference);
 
+    }
+
+    @Override
+    public Preference setPreference(Integer userId, Integer preferenceId) {
+        return null;
     }
 }

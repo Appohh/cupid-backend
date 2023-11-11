@@ -25,9 +25,10 @@ public class UserServiceImplTest {
     public void createUser_shouldReturnCreatedUser() throws Exception {
         // Arrange
         UserAdapter testUserRepo = mock(UserAdapter.class);
-        when(testUserRepo.createUser(any())).thenAnswer(
+        when(testUserRepo.createUser(any(), any())).thenAnswer(
                 i -> {
                     CreateUser user = (CreateUser) i.getArgument(0);
+                    Integer preferenceId = i.getArgument(1);
                     return User.builder()
                             .id(1)
                             .fName(user.getFName())
@@ -36,6 +37,7 @@ public class UserServiceImplTest {
                             .email(user.getEmail())
                             .phone(user.getPhone())
                             .gender(user.getGender())
+                            .preferenceId(preferenceId)
                             .locationId(user.getLocationId())
                             .pImage(user.getPImage())
                             .bio(user.getBio())

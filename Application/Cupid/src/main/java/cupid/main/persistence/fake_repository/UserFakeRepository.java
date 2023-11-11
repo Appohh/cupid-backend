@@ -37,14 +37,13 @@ public class UserFakeRepository implements UserAdapter {
     //TODO debug user can still be made with missing fields
 
     @Override
-    public User createUser(CreateUser user) {
+    public User createUser(CreateUser user, Integer preferenceId) {
 
             //user create, get id
 
             //hash
             String password = Security.hashPassword(user.getPassword());
 
-            //preference create
 
             User createdUser = User.builder()
                     .id(ID_DUMMY)
@@ -55,6 +54,7 @@ public class UserFakeRepository implements UserAdapter {
                     .phone(user.getPhone())
                     .gender(user.getGender())
                     .password(password)
+                    .preferenceId(preferenceId)
                     .locationId(user.getLocationId())
                     .pImage(user.getPImage())
                     .bio(user.getBio())
