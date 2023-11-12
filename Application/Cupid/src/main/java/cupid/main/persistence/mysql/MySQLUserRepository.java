@@ -47,16 +47,24 @@ public class MySQLUserRepository implements UserAdapter  {
 
     @Override
     public boolean userExist(String email, String phone) {
-        return false;
+        if(!email.isEmpty() && phone.isEmpty()) {
+            return jpa.existsByEmail(email);
+        }
+        if(email.isEmpty() && !phone.isEmpty()) {
+            return jpa.existsByPhone(phone);
+        }
+
+        throw new IllegalArgumentException("No arguments given");
+
     }
 
     @Override
     public User getUserByEmail(String email) {
-        return null;
+        return jpa.findUserByEmail(email);
     }
 
     @Override
     public String getUserHashAndSalt(String email) {
-        return null;
+        return jpa.findPasswordByEmail(email).get();
     }
 }
