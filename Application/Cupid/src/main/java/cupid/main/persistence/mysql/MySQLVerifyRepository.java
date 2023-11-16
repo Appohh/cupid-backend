@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-@Profile("mysql")
+//@Profile({"mysql"})
 public class MySQLVerifyRepository implements VerifyAdapter {
     private iVerifyJpa jpa;
     @Autowired
