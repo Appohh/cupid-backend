@@ -1,16 +1,17 @@
 package cupid.main.controller;
 
+import com.sun.mail.iap.ConnectionException;
 import cupid.main.business.impl.UserServiceImpl;
+import cupid.main.business.impl.VerifyServiceImpl;
+import cupid.main.controller.dto.Handler.custom_exceptions.InvalidException;
 import cupid.main.controller.dto.Preference.GetPreferenceResponse;
 import cupid.main.controller.dto.Preference.UpdatePreferenceRequest;
 import cupid.main.controller.dto.User.*;
 import cupid.main.domain.Dto.Preference.UpdatePreference;
-import cupid.main.domain.Dto.User.CreateUser;
-import cupid.main.domain.Dto.User.CreateUserResponse;
-import cupid.main.domain.Dto.User.GetUserResponse;
-import cupid.main.domain.Dto.User.UserLogin;
+import cupid.main.domain.Dto.User.*;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
+import cupid.main.domain.Entity.VerifyToken;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
     private final UserServiceImpl userService;
+    private final VerifyServiceImpl verifyService;
 
     @PostMapping("create")
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
@@ -64,4 +66,41 @@ public class UserController {
         return ResponseEntity.ok().body(GetPreferenceResponse.fromPreference(preference));
     }
 
+    @PostMapping("createToken")
+    public ResponseEntity<CreateVerifyResponse> createVerifyToken(@RequestBody @Valid CreateVerifyEmailRequest request){
+        if(request.getEmail().isEmpty()) {
+            throw new IllegalArgumentException("No email address received");
+        }
+
+        VerifyToken createdToken = verifyService.CreateToken();
+        String verificationLink = "http://localhost:5173/verify/" + createdToken.getToken();
+        verifyService.MailToken(request.getEmail(), verificationLink, createdToken);
+
+        CreateVerifyResponse response = CreateVerifyResponse.builder()
+                .token(createdToken.getToken())
+                .build();
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping("validateToken")
+    public ResponseEntity<Boolean> validateVerifyToken(@RequestBody @Valid ValidateVerifyEmailRequest request){
+        if(request.getToken().isEmpty()) {
+            throw new IllegalArgumentException("No token received");
+        }
+
+        if (!verifyService.TokenValid(request.getToken())){
+            throw new InvalidException("Token is invalid");
+        }
+
+        Boolean result = verifyService.VerifyToken(request.getToken());
+        //TODO error?
+        return ResponseEntity.ok().body(result);
+    }
+
+    @GetMapping({"{token}", "/verificationStatus/{token}"})
+    public ResponseEntity<Integer> checkVerificationStatus(@PathVariable(value = "token") String token) {
+        Integer status = verifyService.checkVerificationStatus(token);
+        return ResponseEntity.ok().body(status);
+    }
 }

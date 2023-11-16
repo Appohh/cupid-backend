@@ -146,3 +146,15 @@ u
 Esrc/main/java/cupid/main/persistence/mysql/MySQLVerifyRepository.java,5\2\5255eba2e1ca9b548f44074df69209fe3ff2165a
 m
 =src/main/java/cupid/main/business/impl/VerifyServiceImpl.java,d\c\dc8e40c7618a2545fbf292f1fa01c55f6318b747
+_
+/src/main/java/cupid/main/config/MailConfig.java,4\4\449a9dc21316a75418f752403eaaaadae0daf114
+z
+Jsrc/main/java/cupid/main/controller/dto/User/CreateVerifyEmailRequest.java,c\a\ca84eef7e0a8d0e52ce10c37f0272d5e60067f61
+|
+Lsrc/main/java/cupid/main/controller/dto/User/ValidateVerifyEmailRequest.java,4\1\4149ccdf7c69fefd4bc565403b60aa25d559696e
+ç
+]src/main/java/cupid/main/controller/dto/Handler/custom_exceptions/GlobalExceptionHandler.java,b\d\bd3123d4d5df2081a890e0dae312f9c3462296a1
+á
+Wsrc/main/java/cupid/main/controller/dto/Handler/custom_exceptions/InvalidException.java,7\2\7267455adeadf59adabf7774583a68849005e580
+r
+Bsrc/main/java/cupid/main/domain/Dto/User/CreateVerifyResponse.java,a\c\acaa83d2d5f49b53fe71d7e1594dcd2d397e90b4

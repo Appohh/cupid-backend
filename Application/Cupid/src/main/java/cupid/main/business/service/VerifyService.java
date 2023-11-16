@@ -7,4 +7,5 @@ public interface VerifyService {
     boolean MailToken(String email, String url, VerifyToken token);
     boolean TokenValid(String token);
     boolean VerifyToken(String token);
+    Integer checkVerificationStatus(String token);
 }

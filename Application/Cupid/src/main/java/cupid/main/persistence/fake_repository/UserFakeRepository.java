@@ -34,12 +34,8 @@ public class UserFakeRepository implements UserAdapter {
         return foundUser.get();
     }
 
-    //TODO debug user can still be made with missing fields
-
     @Override
     public User createUser(CreateUser user, Integer preferenceId) {
-
-            //user create, get id
 
             //hash
             String password = Security.hashPassword(user.getPassword());
@@ -87,7 +83,6 @@ public class UserFakeRepository implements UserAdapter {
     @Override
     public String getUserHashAndSalt(String email) {
         User user = getUserByEmail(email);
-
         return user.getPassword();
     }
 }

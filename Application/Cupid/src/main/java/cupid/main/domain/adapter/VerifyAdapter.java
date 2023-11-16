@@ -6,4 +6,5 @@ public interface VerifyAdapter {
     VerifyToken CreateToken();
     boolean TokenValid(String token);
     boolean VerifyToken(String token);
+    int checkVerificationStatus(String token);
 }

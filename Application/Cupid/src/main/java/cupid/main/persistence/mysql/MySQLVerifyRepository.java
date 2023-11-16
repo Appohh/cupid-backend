@@ -1,15 +1,18 @@
 package cupid.main.persistence.mysql;
 
+import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
 import cupid.main.controller.dto.Handler.custom_exceptions.TokenExpiredException;
 import cupid.main.domain.Entity.VerifyToken;
 import cupid.main.domain.adapter.VerifyAdapter;
 import cupid.main.domain.other.MailService;
 import cupid.main.persistence.iJpa.iVerifyJpa;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -29,6 +32,7 @@ public class MySQLVerifyRepository implements VerifyAdapter {
          VerifyToken verifyToken = VerifyToken.builder()
                 .token(token)
                 .expires(expires)
+                .verified(0)
                 .build();
 
          return jpa.save(verifyToken);
@@ -36,26 +40,34 @@ public class MySQLVerifyRepository implements VerifyAdapter {
 
     @Override
     public boolean TokenValid(String token) {
-        VerifyToken tokenFound = jpa.findVerifyTokenByToken(token);
-        if(tokenFound.getExpires().isAfter(LocalDateTime.now())){
-            throw new TokenExpiredException("Token exceeded expiration datetime");
-        }
-        if(tokenFound.getVerified() != 0){
-            throw new IllegalArgumentException("Token already verified or invalid");
+        Optional<VerifyToken> tokenFound = Optional.ofNullable(jpa.findVerifyTokenByToken(token));
+
+        if(tokenFound.isEmpty()){
+            throw new NotFoundException("Token was not found");
         }
 
-        if(jpa.validateToken(tokenFound.getToken()) < 1) {
-            throw new RuntimeException("Token could not be validated");
+        if(tokenFound.get().getExpires().isBefore(LocalDateTime.now())){
+            throw new TokenExpiredException("Token exceeded expiration datetime");
+        }
+        if(tokenFound.get().getVerified() != 0){
+            throw new TokenExpiredException("Token already verified or invalid");
         }
 
         return true;
     }
 
     @Override
+    @Transactional
     public boolean VerifyToken(String token) {
-        if(jpa.findVerifyTokenByToken(token).getVerified() == 1) {
-            throw new IllegalArgumentException("Token already verified or invalid");
-        }
         return jpa.validateToken(token) > 0;
+    }
+
+    @Override
+    public int checkVerificationStatus(String token) {
+        Optional<VerifyToken> foundToken = Optional.ofNullable(jpa.findVerifyTokenByToken(token));
+        if (foundToken.isEmpty()){
+            throw new NotFoundException("Token was not found");
+        }
+        return foundToken.get().getVerified();
     }
 }
