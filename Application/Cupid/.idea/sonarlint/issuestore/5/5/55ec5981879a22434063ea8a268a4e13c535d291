@@ -1,4 +1,6 @@
 
-m	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÂ°Â8Ï÷Æ©½1
+m	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÂ°Â8ÆÄ±Ä¾1
 T
-java:S1135a"2Complete the task associated to this TODO comment.(§Ï†îıÿÿÿÿ8æ÷Æ©½1
+java:S1135b"2Complete the task associated to this TODO comment.(§Ï†îıÿÿÿÿ8èÄ±Ä¾1
+c
+java:S1128"ARemove this unused import 'com.sun.mail.iap.ConnectionException'.(ë¡¯úÿÿÿÿ8êÄ±Ä¾1

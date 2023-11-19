@@ -28,6 +28,7 @@ public class UserController {
 
     @PostMapping("create")
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
+        request.setLocationId(123);
         User createdUser = userService.createUser(CreateUser.fromRequest(request));
         CreateUserResponse response = CreateUserResponse.builder().id(createdUser.getId()).build();
 

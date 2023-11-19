@@ -47,15 +47,22 @@ public class MySQLUserRepository implements UserAdapter  {
 
     @Override
     public boolean userExist(String email, String phone) {
-        if(!email.isEmpty() && phone.isEmpty()) {
-            return jpa.existsByEmail(email);
-        }
-        if(email.isEmpty() && !phone.isEmpty()) {
-            return jpa.existsByPhone(phone);
+        if (email.isEmpty() && phone.isEmpty()) {
+            throw new IllegalArgumentException("No arguments given");
         }
 
-        throw new IllegalArgumentException("No arguments given");
+        boolean emailExists = false;
+        boolean phoneExists = false;
 
+        if (!email.isEmpty()) {
+            emailExists = jpa.existsByEmail(email);
+        }
+
+        if (!phone.isEmpty()) {
+            phoneExists = jpa.existsByPhone(phone);
+        }
+
+        return (email.isEmpty() || emailExists) && (phone.isEmpty() || phoneExists);
     }
 
     @Override
