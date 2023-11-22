@@ -8,6 +8,6 @@ import cupid.main.domain.Dto.User.UserLogin;
 public interface UserService {
     User createUser(CreateUser user);
     User getUserById(Integer id);
-    User authenticateUser(UserLogin attempt);
+    String authenticateUser(UserLogin attempt);
     User updateUserPreference(UpdatePreference preference, Integer preferenceId);
 }

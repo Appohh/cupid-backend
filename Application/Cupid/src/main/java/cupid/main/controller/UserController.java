@@ -44,12 +44,9 @@ public class UserController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<GetUserResponse> authenticateUser(@RequestBody @Valid UserLogin request) {
-        User authorizedUser = userService.authenticateUser(request);
-
-        GetUserResponse userResponse = GetUserResponse.fromUser(authorizedUser);
-
-        return ResponseEntity.ok().body(userResponse);
+    public ResponseEntity<String> authenticateUser(@RequestBody @Valid UserLogin request) {
+        String jwt = userService.authenticateUser(request);
+        return ResponseEntity.ok().body(jwt);
     }
 
     @PostMapping("validatePreference")

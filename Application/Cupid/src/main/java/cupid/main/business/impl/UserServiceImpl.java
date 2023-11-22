@@ -1,6 +1,8 @@
 package cupid.main.business.impl;
 
 import cupid.main.business.Security;
+import cupid.main.config.security.token.impl.AccessTokenEncoderDecoderImpl;
+import cupid.main.config.security.token.impl.AccessTokenImpl;
 import cupid.main.domain.adapter.PreferenceAdapter;
 import cupid.main.business.service.UserService;
 import cupid.main.controller.dto.Handler.custom_exceptions.AlreadyExistException;
@@ -14,13 +16,18 @@ import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.domain.Dto.User.UserLogin;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     UserAdapter userRepository;
     PreferenceAdapter preferenceRepository;
+    AccessTokenEncoderDecoderImpl accessToken;
 
 
     @Override
@@ -42,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User authenticateUser(UserLogin attempt) {
+    public String authenticateUser(UserLogin attempt) {
         if (!userRepository.userExist(attempt.getEmail(), "")) {
             throw new NotFoundException("User with email: " + attempt.getEmail() + " does not exist");
         }
@@ -52,7 +59,12 @@ public class UserServiceImpl implements UserService {
             throw new UnAuthorizedException("Provided credentials are invalid");
         }
 
-        return userRepository.getUserByEmail(attempt.getEmail());
+        User loggedUser = userRepository.getUserByEmail(attempt.getEmail());
+
+        List<String> roles = new ArrayList<>();
+        AccessTokenImpl jwt = new AccessTokenImpl(loggedUser.getEmail(), loggedUser.getId(), roles);
+
+        return accessToken.encode(jwt);
     }
 
     @Override
