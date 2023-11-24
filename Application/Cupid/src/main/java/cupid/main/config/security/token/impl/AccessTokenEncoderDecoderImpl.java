@@ -27,7 +27,7 @@ import java.util.Map;
 public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, AccessTokenDecoder {
     private final Key key;
 
-    public AccessTokenEncoderDecoderImpl(@Value("BdBjNqhyKq8/3wtMMv0zxjPZCPAu4l/ue0OMBGwqZcLWUPlDVpy8IrgJ7ukxSKslWIWT+vyJYBdW+15fqh1PBw==") String secretKey) {
+    public AccessTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
@@ -59,7 +59,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                     .parseClaimsJws(accessTokenEncoded);
             Claims claims = jwt.getBody();
 
-            List<String> roles = claims.get("roles", List.class);
+            List<Integer> roles = claims.get("roles", List.class);
             Integer userId = claims.get("userId", Integer.class);
 
             return new AccessTokenImpl(claims.getSubject(), userId, roles);

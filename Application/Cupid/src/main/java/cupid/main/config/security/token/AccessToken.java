@@ -7,5 +7,5 @@ public interface AccessToken {
 
     Integer getUserId();
 
-    Set<String> getRoles();
+    Set<Integer> getRoles();
 }

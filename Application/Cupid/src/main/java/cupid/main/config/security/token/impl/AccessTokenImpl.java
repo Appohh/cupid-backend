@@ -13,9 +13,9 @@ import java.util.Set;
 public class AccessTokenImpl implements AccessToken {
     private final String subject;
     private final Integer userId;
-    private final Set<String> roles;
+    private final Set<Integer> roles;
 
-    public AccessTokenImpl(String subject, Integer userId, Collection<String> roles) {
+    public AccessTokenImpl(String subject, Integer userId, Collection<Integer> roles) {
         this.subject = subject;
         this.userId = userId;
         this.roles = roles != null ? Set.copyOf(roles) : Collections.emptySet();

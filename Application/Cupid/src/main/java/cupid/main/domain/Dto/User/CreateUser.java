@@ -19,6 +19,7 @@ public class CreateUser {
     private Integer locationId;
     private String pImage;
     private String bio;
+    private Integer role;
 
     public static CreateUser fromRequest(CreateUserRequest request) {
         return CreateUser.builder()
@@ -32,6 +33,7 @@ public class CreateUser {
                 .locationId(request.getLocationId())
                 .pImage(request.getPImage())
                 .bio(request.getBio())
+                .role(request.getRole())
                 .build();
     }
 

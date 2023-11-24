@@ -3,6 +3,7 @@ package cupid.main.business.impl;
 import cupid.main.business.Security;
 import cupid.main.config.security.token.impl.AccessTokenEncoderDecoderImpl;
 import cupid.main.config.security.token.impl.AccessTokenImpl;
+import cupid.main.domain.Dto.Role.CreateRole;
 import cupid.main.domain.adapter.PreferenceAdapter;
 import cupid.main.business.service.UserService;
 import cupid.main.controller.dto.Handler.custom_exceptions.AlreadyExistException;
@@ -12,6 +13,7 @@ import cupid.main.domain.Dto.Preference.UpdatePreference;
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
+import cupid.main.domain.adapter.RoleAdapter;
 import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.domain.Dto.User.UserLogin;
 import jakarta.transaction.Transactional;
@@ -27,6 +29,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     UserAdapter userRepository;
     PreferenceAdapter preferenceRepository;
+    RoleAdapter roleAdapter;
     AccessTokenEncoderDecoderImpl accessToken;
 
 
@@ -38,9 +41,14 @@ public class UserServiceImpl implements UserService {
         }
 
         Preference preference = preferenceRepository.createPreference();
+        User createdUser = userRepository.createUser(user, preference.getId());
+        CreateRole roleCreate = CreateRole.builder()
+                .userId(createdUser.getId())
+                .role(user.getRole())
+                .build();
+        roleAdapter.createRole(roleCreate);
 
-
-        return userRepository.createUser(user, preference.getId());
+        return createdUser;
     }
 
     @Override
@@ -61,18 +69,14 @@ public class UserServiceImpl implements UserService {
 
         User loggedUser = userRepository.getUserByEmail(attempt.getEmail());
 
-        List<String> roles = new ArrayList<>();
+        List<Integer> roles = new ArrayList<>();
+        roles.add(roleAdapter.getRole(loggedUser.getId()));
         AccessTokenImpl jwt = new AccessTokenImpl(loggedUser.getEmail(), loggedUser.getId(), roles);
 
         return accessToken.encode(jwt);
     }
 
     @Override
-    public User updateUserPreference(UpdatePreference preference, Integer userId) {
-
-    return null;
-    }
-
     public Preference updateUserPreference(User user, UpdatePreference preference){
         Preference newPreference = Preference.builder()
             .id(user.getPreferenceId())

@@ -53,7 +53,7 @@ public class PreferenceFakeRepository implements PreferenceAdapter {
     }
 
     @Override
-    public void UpdatePreference(Preference preference) {
+    public Preference UpdatePreference(Preference preference) {
 
         if (getPreferenceById(preference.getId()) == null) {
             throw new NotFoundException("Preference not found");
@@ -61,6 +61,7 @@ public class PreferenceFakeRepository implements PreferenceAdapter {
 
         preferences.removeIf(pref -> pref.getId().equals(preference.getId()));
         preferences.add(preference);
+        return preference;
 
     }
 

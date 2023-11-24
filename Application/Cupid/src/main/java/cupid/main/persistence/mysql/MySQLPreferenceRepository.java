@@ -32,8 +32,8 @@ public class MySQLPreferenceRepository implements PreferenceAdapter {
     }
 
     @Override
-    public void UpdatePreference(Preference preference) {
-
+    public Preference UpdatePreference(Preference preference) {
+    return null;
     }
 
     @Override

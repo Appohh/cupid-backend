@@ -21,4 +21,5 @@ public class CreateUserRequest {
     private Integer locationId;
     private String pImage;
     private String bio;
+    private Integer role;
 }

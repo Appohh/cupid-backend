@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -36,6 +37,7 @@ public class UserController {
     }
 
     @GetMapping("{id}")
+    @PreAuthorize("hasRole(1)")
     public ResponseEntity<GetUserResponse> getUser(@PathVariable(value = "id") int id) {
         User foundUser = userService.getUserById(id);
         GetUserResponse response = GetUserResponse.fromUser(foundUser);
@@ -50,8 +52,8 @@ public class UserController {
     }
 
     @PostMapping("validatePreference")
-    public ResponseEntity<Boolean> userPreferenceFilled(@RequestBody @Valid int UserId) {
-        if(userService.userFilledPreference(userService.getUserById(UserId))) {
+    public ResponseEntity<Boolean> userPreferenceFilled(@RequestBody @Valid int userId) {
+        if(userService.userFilledPreference(userService.getUserById(userId))) {
             return ResponseEntity.ok(true);
         }
         return null;
@@ -95,8 +97,7 @@ public class UserController {
         //TODO error?
         return ResponseEntity.ok().body(result);
     }
-
-    @GetMapping({"{token}", "/verificationStatus/{token}"})
+    @GetMapping("/verificationStatus/{token}")
     public ResponseEntity<Integer> checkVerificationStatus(@PathVariable(value = "token") String token) {
         Integer status = verifyService.checkVerificationStatus(token);
         return ResponseEntity.ok().body(status);
