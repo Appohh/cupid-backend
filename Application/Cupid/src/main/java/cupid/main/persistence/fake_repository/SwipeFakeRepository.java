@@ -1,7 +1,7 @@
 package cupid.main.persistence.fake_repository;
 
 import cupid.main.domain.adapter.SwipeAdapter;
-import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
+import cupid.main.config.custom_exceptions.NotFoundException;
 import cupid.main.domain.Dto.Swipe.GetSwipesByUserIdResponse;
 import cupid.main.domain.Entity.Swipe;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package cupid.main.persistence.mysql;
 
-import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
+import cupid.main.config.custom_exceptions.NotFoundException;
 import cupid.main.domain.Dto.Role.CreateRole;
 import cupid.main.domain.Entity.Role;
 import cupid.main.domain.adapter.RoleAdapter;

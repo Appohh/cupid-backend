@@ -1,5 +1,6 @@
 package cupid.main.business;
 
+import cupid.main.config.Security;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

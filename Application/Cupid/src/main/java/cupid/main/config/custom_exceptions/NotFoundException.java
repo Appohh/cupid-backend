@@ -1,4 +1,4 @@
-package cupid.main.controller.dto.Handler.custom_exceptions;
+package cupid.main.config.custom_exceptions;
 
 public class NotFoundException extends RuntimeException {
     @lombok.Getter

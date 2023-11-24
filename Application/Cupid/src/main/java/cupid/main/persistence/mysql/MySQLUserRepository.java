@@ -1,6 +1,6 @@
 package cupid.main.persistence.mysql;
 
-import cupid.main.business.Security;
+import cupid.main.config.Security;
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.UserAdapter;

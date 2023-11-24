@@ -1,9 +1,8 @@
 package cupid.main.controller;
 
-import com.sun.mail.iap.ConnectionException;
 import cupid.main.business.impl.UserServiceImpl;
 import cupid.main.business.impl.VerifyServiceImpl;
-import cupid.main.controller.dto.Handler.custom_exceptions.InvalidException;
+import cupid.main.config.custom_exceptions.InvalidException;
 import cupid.main.controller.dto.Preference.GetPreferenceResponse;
 import cupid.main.controller.dto.Preference.UpdatePreferenceRequest;
 import cupid.main.controller.dto.User.*;

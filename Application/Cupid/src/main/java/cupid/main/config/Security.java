@@ -1,4 +1,4 @@
-package cupid.main.business;
+package cupid.main.config;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;

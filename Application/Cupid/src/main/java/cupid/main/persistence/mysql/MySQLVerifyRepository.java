@@ -1,14 +1,12 @@
 package cupid.main.persistence.mysql;
 
-import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
-import cupid.main.controller.dto.Handler.custom_exceptions.TokenExpiredException;
+import cupid.main.config.custom_exceptions.NotFoundException;
+import cupid.main.config.custom_exceptions.TokenExpiredException;
 import cupid.main.domain.Entity.VerifyToken;
 import cupid.main.domain.adapter.VerifyAdapter;
-import cupid.main.domain.other.MailService;
 import cupid.main.persistence.iJpa.iVerifyJpa;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

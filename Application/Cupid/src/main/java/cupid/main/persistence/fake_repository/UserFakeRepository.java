@@ -1,7 +1,7 @@
 package cupid.main.persistence.fake_repository;
 
-import cupid.main.business.Security;
-import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
+import cupid.main.config.Security;
+import cupid.main.config.custom_exceptions.NotFoundException;
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.UserAdapter;

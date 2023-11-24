@@ -1,4 +1,4 @@
-package cupid.main.controller.dto.Handler.custom_exceptions;
+package cupid.main.config.custom_exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

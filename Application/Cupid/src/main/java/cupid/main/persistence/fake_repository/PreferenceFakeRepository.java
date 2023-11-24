@@ -1,7 +1,7 @@
 package cupid.main.persistence.fake_repository;
 
 import cupid.main.domain.adapter.PreferenceAdapter;
-import cupid.main.controller.dto.Handler.custom_exceptions.NotFoundException;
+import cupid.main.config.custom_exceptions.NotFoundException;
 import cupid.main.domain.Entity.Preference;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Profile;
