@@ -29,14 +29,10 @@ u
 Esrc/main/java/cupid/main/controller/dto/Match/CreateMatchRequest.java,b\8\b8a2c2a3c99c670d2ef78e92701ec75abbf8df71
 r
 Bsrc/main/java/cupid/main/domain/Dto/Match/CreateMatchResponse.java,e\8\e88539076e78b94f9657daeeee0ef119de0c2df3
-u
-Esrc/main/java/cupid/main/controller/dto/Handler/ExceptionHandler.java,f\b\fb3a9d21e88e286c6fd237370397495797873ee2
 a
 1src/main/java/cupid/main/domain/Entity/Match.java,1\9\19a512f1d71836e0187298680a5e368dd316ba79
 a
 1src/main/java/cupid/main/domain/Entity/Swipe.java,3\4\34fef29fa4d0b94d63a8ac7f0f5ffda304a2fa84
-q
-Asrc/main/java/cupid/main/controller/dto/Handler/CallResponse.java,1\8\18fefc350e7a00a7c7354933f6564291366d5f5c
 k
 ;src/main/java/cupid/main/business/service/MatchService.java,f\5\f57d7bf0da4871c6ad56bad1c0324b43bfdfe2ef
 k
@@ -51,10 +47,6 @@ c
 3src/test/java/cupid/main/business/SecurityTest.java,1\3\13dbc5e1a1bc4089c4713f9b4779255af586b8dc
 h
 8src/main/java/cupid/main/controller/MatchController.java,0\6\06b4ef7f851a4ccd3e8f79cda8dcfda3bc48c4a0
-Œ
-\src/main/java/cupid/main/controller/dto/Handler/custom_exceptions/UnAuthorizedException.java,e\0\e013cd1e59f9aad9b47c7c71cfb9d2bcd3d942d5
-ˆ
-Xsrc/main/java/cupid/main/controller/dto/Handler/custom_exceptions/NotFoundException.java,f\1\f15be83d9922131be4ba64e8db3f10fbd9020951
 p
 @src/main/java/cupid/main/domain/Dto/User/CreateUserResponse.java,7\e\7ed535834d17bfeff28432bcc68a2c993dd3d4d6
 R
@@ -84,10 +76,6 @@ l
 <src/main/java/cupid/main/business/service/ForYouService.java,0\4\045743da845d0ddb97fb05c61d961529aa99aef9
 j
 :src/main/java/cupid/main/business/service/UserService.java,b\2\b2f07472df5bd4184dace134d856c24f04298869
-Œ
-\src/main/java/cupid/main/controller/dto/Handler/custom_exceptions/AlreadyExistException.java,a\6\a6b85ae4d7f98e0c42c9e322a6f319287b879881
-_
-/src/main/java/cupid/main/business/Security.java,4\b\4b85d167281e12388ff4cdaa530fbbeefeee1b84
 o
 ?src/test/java/cupid/main/business/impl/UserServiceImplTest.java,f\3\f3fca3c79064ab9d198f05f27732476c8755f958
 n
@@ -136,8 +124,6 @@ f
 6src/main/java/cupid/main/domain/other/MailService.java,b\3\b3b11b6401205f382c2597d6717dfdc058116864
 f
 6src/main/java/cupid/main/external/MailServiceImpl.java,6\4\640cdef8fcc5fa29b00ec9ab506b7d77997259a6
-Œ
-\src/main/java/cupid/main/controller/dto/Handler/custom_exceptions/TokenExpiredException.java,2\8\28e551af8c74cf1f5e8e3431a3f8fa00d52a6e9e
 i
 9src/main/java/cupid/main/persistence/iJpa/iVerifyJpa.java,b\7\b7e0e93c48922d0c84f6b2c053c63c23eae11c0d
 j
@@ -152,10 +138,6 @@ z
 Jsrc/main/java/cupid/main/controller/dto/User/CreateVerifyEmailRequest.java,c\a\ca84eef7e0a8d0e52ce10c37f0272d5e60067f61
 |
 Lsrc/main/java/cupid/main/controller/dto/User/ValidateVerifyEmailRequest.java,4\1\4149ccdf7c69fefd4bc565403b60aa25d559696e
-
-]src/main/java/cupid/main/controller/dto/Handler/custom_exceptions/GlobalExceptionHandler.java,b\d\bd3123d4d5df2081a890e0dae312f9c3462296a1
-‡
-Wsrc/main/java/cupid/main/controller/dto/Handler/custom_exceptions/InvalidException.java,7\2\7267455adeadf59adabf7774583a68849005e580
 r
 Bsrc/main/java/cupid/main/domain/Dto/User/CreateVerifyResponse.java,a\c\acaa83d2d5f49b53fe71d7e1594dcd2d397e90b4
 ~
@@ -184,3 +166,9 @@ g
 7src/main/java/cupid/main/persistence/iJpa/IRoleJpa.java,1\3\13c0ee0d96986ee3cdd15d289a5389d18aa337ef
 s
 Csrc/main/java/cupid/main/persistence/mysql/MySQLRoleRepository.java,3\c\3c230d71c9a92ac848f71c2dbe0f2fe72bbbd033
+]
+-src/main/java/cupid/main/config/Security.java,0\0\008dec0c0c107ed0cb8d690a7b2b8bda9d3868ed
+|
+Lsrc/main/java/cupid/main/config/custom_exceptions/UnAuthorizedException.java,9\c\9cc8ace9c0b37654f54c840f264646e0af0d670e
+}
+Msrc/main/java/cupid/main/config/custom_exceptions/GlobalExceptionHandler.java,c\c\cce484460e5825f2268674352e95f5cec713aa1e
