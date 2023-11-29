@@ -4,6 +4,7 @@ variables:
 stages:
   - build
   - test
+  - sonarqube-chec
 
 build:
   stage: build
@@ -16,3 +17,9 @@ test:
   script:
     - cd ./Application/Cupid
     - ./gradlew test
+
+sonarqube-check:
+  stage: sonarqube
+  script:
+    - cd ./Application/Cupid
+    - ./gradlew test sonar
