@@ -55,10 +55,11 @@ jacocoTestReport {
             property "sonar.host.url", "http://localhost:9000"
             property "sonar.qualitygate.wait", true
             property "sonar.gradle.skipCompile", true
-            property "sonar.inclusions", [
-                    "src/*//business/*",
-                    "src/*//test/*"
-
+            property "sonar.coverage.exclusions", [
+                    "src/*//config/*",
+                    "src/*//controller/dto/*",
+                    "src/*//domain/*",
+                    "src/*//external/*"
             ]
 
         }
