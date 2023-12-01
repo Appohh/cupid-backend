@@ -46,4 +46,21 @@ jacocoTestReport {
     reports {
         xml.required = true
     }
+
+    sonar {
+        properties {
+            property "sonar.projectKey", "Cupid"
+            property "sonar.projectName", "Cupid"
+            property "sonar.token", "sqb_9e77c0a73ee8a8991b3c8abb0063bba5b570f999"
+            property "sonar.host.url", "http://localhost:9000"
+            property "sonar.qualitygate.wait", true
+            property "sonar.gradle.skipCompile", true
+            property "sonar.inclusions", [
+                    "src/*//business/*",
+            ]
+
+        }
+    }
+
+
 }
