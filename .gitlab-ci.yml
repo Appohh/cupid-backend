@@ -19,7 +19,7 @@ test:
     - ./gradlew test
 
 sonarqube-check:
-  stage: sonarqube
+  stage: sonarqube-check
   script:
     - cd ./Application/Cupid
     - ./gradlew test sonar
