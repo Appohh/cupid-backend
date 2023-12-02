@@ -16,10 +16,12 @@ import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.RoleAdapter;
 import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.domain.Dto.User.UserLogin;
+import cupid.main.domain.other.ImageService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
     PreferenceAdapter preferenceRepository;
     RoleAdapter roleAdapter;
     AccessTokenEncoderDecoderImpl accessToken;
+    ImageService imageService;
 
 
     @Override
@@ -40,12 +43,15 @@ public class UserServiceImpl implements UserService {
         }
 
         Preference preference = preferenceRepository.createPreference();
+        String createdImagePath = imageService.SaveImage(user.getPImage());
+        user.setPImage(createdImagePath);
         User createdUser = userRepository.createUser(user, preference.getId());
         CreateRole roleCreate = CreateRole.builder()
                 .userId(createdUser.getId())
                 .role(user.getRole())
                 .build();
         roleAdapter.createRole(roleCreate);
+
 
         return createdUser;
     }

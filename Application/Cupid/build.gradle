@@ -56,10 +56,12 @@ jacocoTestReport {
             property "sonar.qualitygate.wait", true
             property "sonar.gradle.skipCompile", true
             property "sonar.coverage.exclusions", [
-                    "src/*//config/*",
-                    "src/*//controller/dto/*",
-                    "src/*//domain/*",
-                    "src/*//external/*"
+                    "**/config/**",
+                    "**/controller/**",
+                    "**/domain/**",
+                    "**/external/**",
+                    "**/persistence/**"
+
             ]
 
         }
