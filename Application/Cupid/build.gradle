@@ -61,7 +61,6 @@ jacocoTestReport {
                     "**/domain/**",
                     "**/external/**",
                     "**/persistence/**"
-
             ]
 
         }

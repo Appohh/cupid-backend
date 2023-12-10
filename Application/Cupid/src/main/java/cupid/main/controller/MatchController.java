@@ -46,7 +46,7 @@ public class MatchController {
     }
 
     @GetMapping("/{userId1}/{userId2}")
-    public ResponseEntity<GetMatchResponse> getMatchesByUserId(@PathVariable("userId1") int userId1, @PathVariable("userId2") int userId2) {
+    public ResponseEntity<GetMatchResponse> getMatchesByPair(@PathVariable("userId1") int userId1, @PathVariable("userId2") int userId2) {
         Match matchFound = matchService.getMatchByPair(userId1, userId2);
 
         GetMatchResponse response = GetMatchResponse.fromMatch(matchFound);

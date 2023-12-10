@@ -27,6 +27,4 @@ public class Preference {
     private Integer bodyType;
     @Column(name = "ethnicity")
     private Integer ethnicity;
-    @Column(name = "height")
-    private Integer height;
 }

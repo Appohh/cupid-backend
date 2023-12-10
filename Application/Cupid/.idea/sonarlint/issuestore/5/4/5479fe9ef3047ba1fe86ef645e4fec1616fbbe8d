@@ -1,5 +1,5 @@
 
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¸Á-
-k	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(«‘òøÿÿÿÿ
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¸Á-8üıÁÅ1
+r	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(«‘òøÿÿÿÿ8üıÁÅ1
 W
-java:S1128":Remove this unused import 'cupid.main.domain.Entity.User'.(çšªÂ8‘¼õÉ»1
+java:S1128":Remove this unused import 'cupid.main.domain.Entity.User'.(çšªÂ8şıÁÅ1

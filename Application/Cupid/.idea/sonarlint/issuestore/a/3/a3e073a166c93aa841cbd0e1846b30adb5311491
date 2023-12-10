@@ -1,0 +1,7 @@
+
+g	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(ğ¦şöúÿÿÿÿ8€Ã÷İÂ1
+L
+java:S1066#"/Merge this if statement with the enclosing one.(ğÿÔ—8Ã÷İÂ1
+v	java:S116"ZRename this field "IMAGE_DIRECTORY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¸¸8†Ã÷İÂ1
+X
+java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8Ã÷İÂ1

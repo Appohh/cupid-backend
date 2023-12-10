@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5173")
 @AllArgsConstructor
 public class UserController {
     private final UserServiceImpl userService;
@@ -49,16 +49,16 @@ public class UserController {
         String jwt = userService.authenticateUser(request);
         return ResponseEntity.ok().body(jwt);
     }
-
-    @PostMapping("validatePreference")
-    public ResponseEntity<Boolean> userPreferenceFilled(@RequestBody @Valid int userId) {
-        if(userService.userFilledPreference(userService.getUserById(userId))) {
+    @GetMapping("/validatePreference/{userId}")
+    public ResponseEntity<Boolean> validatePreference(@PathVariable("userId") @Valid int userId) {
+        if (userService.userFilledPreference(userService.getUserById(userId))) {
             return ResponseEntity.ok(true);
         }
-        return null;
+        return ResponseEntity.ok(false);
     }
 
-    @PostMapping("updatePreference")
+    @PostMapping("/updatePreference")
+    @PreAuthorize("hasRole(1)")
     public ResponseEntity<GetPreferenceResponse> updateUserPreference(@RequestBody @Valid UpdatePreferenceRequest request) {
         Preference preference = userService.updateUserPreference(userService.getUserById(request.getUserId()), UpdatePreference.fromRequest(request));
 

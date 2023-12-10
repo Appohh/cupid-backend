@@ -42,10 +42,19 @@ public class UserServiceImpl implements UserService {
             throw new AlreadyExistException("User already exists");
         }
 
+        //create preference
         Preference preference = preferenceRepository.createPreference();
+
+        //create image and get path
         String createdImagePath = imageService.SaveImage(user.getPImage());
+
+        //set image path in user object
         user.setPImage(createdImagePath);
+
+        //create the user
         User createdUser = userRepository.createUser(user, preference.getId());
+
+        //set role for the created user
         CreateRole roleCreate = CreateRole.builder()
                 .userId(createdUser.getId())
                 .role(user.getRole())
@@ -75,7 +84,8 @@ public class UserServiceImpl implements UserService {
         User loggedUser = userRepository.getUserByEmail(attempt.getEmail());
 
         List<Integer> roles = new ArrayList<>();
-        roles.add(roleAdapter.getRole(loggedUser.getId()));
+//        roles.add(roleAdapter.getRole(loggedUser.getId()));
+        roles.add(1);
         AccessTokenImpl jwt = new AccessTokenImpl(loggedUser.getEmail(), loggedUser.getId(), roles);
 
         return accessToken.encode(jwt);
@@ -89,7 +99,7 @@ public class UserServiceImpl implements UserService {
             .bodyType(preference.getBodyType())
             .distance(preference.getDistance())
             .age(preference.getAge())
-            .height(preference.getHeight())
+            .ethnicity(preference.getEthnicity())
             .build();
         preferenceRepository.UpdatePreference(newPreference);
         return newPreference;

@@ -1,5 +1,6 @@
 package cupid.main.persistence.mysql;
 
+import cupid.main.config.custom_exceptions.NotFoundException;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.adapter.PreferenceAdapter;
 import cupid.main.persistence.iJpa.iPreferenceJpa;
@@ -7,6 +8,8 @@ import cupid.main.persistence.iJpa.iUserJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 @Profile("mysql")
@@ -23,21 +26,29 @@ public class MySQLPreferenceRepository implements PreferenceAdapter {
 
     @Override
     public Preference getPreferenceById(int id) {
-        return null;
+        Optional<Preference> foundPreference = jpa.findById(id);
+        if(foundPreference.isEmpty()){
+            throw new NotFoundException("Preference was not found");
+        }
+        return foundPreference.get();
     }
 
     @Override
     public Boolean PreferenceFilled(Preference preference) {
-        return false;
+        Optional<Preference> foundPreference = jpa.findById(preference.getId());
+        if (foundPreference.isEmpty()){
+            throw new NotFoundException("Preference not found");
+        }
+        if(foundPreference.get().getBodyType() == null){
+            return false;
+        }
+
+        return true;
     }
 
     @Override
     public Preference UpdatePreference(Preference preference) {
-    return null;
+        return jpa.save(preference);
     }
 
-    @Override
-    public Preference setPreference(Integer userId, Integer preferenceId) {
-        return null;
-    }
 }
