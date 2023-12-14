@@ -189,3 +189,11 @@ g
 Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
 m
 =src/main/java/cupid/main/business/impl/ForYouServiceImpl.java,d\c\dca5978c11acae5cb13777a37446b6a663654f0b
+f
+6src/main/java/cupid/main/domain/Entity/Appearance.java,c\6\c67b2e3e2743065647714b6116f2aad0a79a37a8
+m
+=src/main/java/cupid/main/persistence/iJpa/iAppearanceJpa.java,d\f\df09074ef53980fdb0c6a62234ed4c64d7d3357d
+n
+>src/main/java/cupid/main/domain/adapter/AppearanceAdapter.java,a\b\abc873dcb2bead867f80c6d9a9000c92661095e2
+y
+Isrc/main/java/cupid/main/persistence/mysql/MySQLAppearanceRepository.java,a\0\a04ec913a69adb58e274765b2c090b391f67fd9b

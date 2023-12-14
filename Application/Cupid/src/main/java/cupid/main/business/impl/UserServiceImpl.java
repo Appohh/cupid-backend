@@ -3,7 +3,10 @@ package cupid.main.business.impl;
 import cupid.main.config.Security;
 import cupid.main.config.security.token.impl.AccessTokenEncoderDecoderImpl;
 import cupid.main.config.security.token.impl.AccessTokenImpl;
+import cupid.main.domain.Dto.Appearance.UpdateAppearance;
 import cupid.main.domain.Dto.Role.CreateRole;
+import cupid.main.domain.Entity.Appearance;
+import cupid.main.domain.adapter.AppearanceAdapter;
 import cupid.main.domain.adapter.PreferenceAdapter;
 import cupid.main.business.service.UserService;
 import cupid.main.config.custom_exceptions.AlreadyExistException;
@@ -21,7 +24,6 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class UserServiceImpl implements UserService {
     UserAdapter userRepository;
     PreferenceAdapter preferenceRepository;
     RoleAdapter roleAdapter;
+    AppearanceAdapter appearanceRepository;
     AccessTokenEncoderDecoderImpl accessToken;
     ImageService imageService;
 
@@ -53,6 +56,9 @@ public class UserServiceImpl implements UserService {
 
         //create the user
         User createdUser = userRepository.createUser(user, preference.getId());
+
+        //create appearance
+        appearanceRepository.createAppearance(createdUser);
 
         //set role for the created user
         CreateRole roleCreate = CreateRole.builder()
@@ -104,7 +110,7 @@ public class UserServiceImpl implements UserService {
         preferenceRepository.UpdatePreference(newPreference);
         return newPreference;
     }
-
+    @Override
     public boolean userFilledPreference(User user){
         if(user.getPreferenceId() == null){
             throw new IllegalArgumentException("User has no preference id");
@@ -112,9 +118,29 @@ public class UserServiceImpl implements UserService {
 
         return preferenceRepository.PreferenceFilled(preferenceRepository.getPreferenceById(user.getPreferenceId()));
     }
-
+    @Override
     public Preference getUserPreference(User user) {
         return preferenceRepository.getPreferenceById(user.getPreferenceId());
+    }
+    @Override
+    public Appearance createAppearance(User user){
+        return appearanceRepository.createAppearance(user);
+    }
+    @Override
+    public boolean userFilledAppearance(User user){
+        Appearance appearance = appearanceRepository.getAppearanceByUserId(user.getId());
+        return appearanceRepository.appearanceFilled(appearance);
+    }
+    @Override
+    public Appearance updateAppearance(UpdateAppearance updateAppearance){
+        Appearance newAppearance = Appearance.builder()
+                .userId(updateAppearance.getUserId())
+                .gender(updateAppearance.getGender())
+                .bodyType(updateAppearance.getBodyType())
+                .location(updateAppearance.getLocation())
+                .ethnicity(updateAppearance.getEthnicity())
+                .build();
+        return appearanceRepository.updateAppearance(newAppearance);
     }
 
 }

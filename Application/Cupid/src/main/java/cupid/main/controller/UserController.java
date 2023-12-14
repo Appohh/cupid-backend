@@ -3,11 +3,15 @@ package cupid.main.controller;
 import cupid.main.business.impl.UserServiceImpl;
 import cupid.main.business.impl.VerifyServiceImpl;
 import cupid.main.config.custom_exceptions.InvalidException;
+import cupid.main.controller.dto.Appearance.GetAppearanceResponse;
+import cupid.main.controller.dto.Appearance.UpdateAppearanceRequest;
 import cupid.main.controller.dto.Preference.GetPreferenceResponse;
 import cupid.main.controller.dto.Preference.UpdatePreferenceRequest;
 import cupid.main.controller.dto.User.*;
+import cupid.main.domain.Dto.Appearance.UpdateAppearance;
 import cupid.main.domain.Dto.Preference.UpdatePreference;
 import cupid.main.domain.Dto.User.*;
+import cupid.main.domain.Entity.Appearance;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.Entity.VerifyToken;
@@ -63,6 +67,22 @@ public class UserController {
         Preference preference = userService.updateUserPreference(userService.getUserById(request.getUserId()), UpdatePreference.fromRequest(request));
 
         return ResponseEntity.ok().body(GetPreferenceResponse.fromPreference(preference));
+    }
+
+    @GetMapping("/validateAppearance/{userId}")
+    public ResponseEntity<Boolean> validateAppearance(@PathVariable("userId") @Valid int userId) {
+        if (userService.userFilledAppearance(userService.getUserById(userId))) {
+            return ResponseEntity.ok(true);
+        }
+        return ResponseEntity.ok(false);
+    }
+
+    @PostMapping("/updateAppearance")
+    @PreAuthorize("hasRole(1)")
+    public ResponseEntity<GetAppearanceResponse> updateUserAppearance(@RequestBody @Valid UpdateAppearanceRequest request) {
+        Appearance appearance = userService.updateAppearance(UpdateAppearance.fromRequest(request));
+
+        return ResponseEntity.ok().body(GetAppearanceResponse.fromAppearance(appearance));
     }
 
     @PostMapping("createToken")
