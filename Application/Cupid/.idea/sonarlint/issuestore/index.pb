@@ -197,3 +197,9 @@ n
 >src/main/java/cupid/main/domain/adapter/AppearanceAdapter.java,a\b\abc873dcb2bead867f80c6d9a9000c92661095e2
 y
 Isrc/main/java/cupid/main/persistence/mysql/MySQLAppearanceRepository.java,a\0\a04ec913a69adb58e274765b2c090b391f67fd9b
+t
+Dsrc/main/java/cupid/main/domain/Dto/Appearance/UpdateAppearance.java,5\d\5d8a4fb07dac3ed1b58eca1e3053f923aeee4d07
+}
+Msrc/main/java/cupid/main/controller/dto/Appearance/GetAppearanceResponse.java,1\7\17e675fb0ec400eba13fa6fc0753cbf02c99caa0
+
+Osrc/main/java/cupid/main/controller/dto/Appearance/UpdateAppearanceRequest.java,d\8\d8a7a69c50606251a65fc742f2580a5d22c62ddf
