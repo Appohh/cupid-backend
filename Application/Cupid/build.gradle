@@ -42,29 +42,52 @@ test {
     finalizedBy jacocoTestReport
 }
 
+tasks.named('sonar').configure {
+    dependsOn(jacocoTestReport)
+}
+
 jacocoTestReport {
+    dependsOn(test)
     reports {
         xml.required = true
     }
 
-    sonar {
-        properties {
-            property "sonar.projectKey", "Cupid"
-            property "sonar.projectName", "Cupid"
-            property "sonar.token", "sqb_9e77c0a73ee8a8991b3c8abb0063bba5b570f999"
-            property "sonar.host.url", "http://localhost:9000"
-            property "sonar.qualitygate.wait", true
-            property "sonar.gradle.skipCompile", true
-            property "sonar.coverage.exclusions", [
-                    "**/config/**",
-                    "**/controller/**",
-                    "**/domain/**",
-                    "**/external/**",
-                    "**/persistence/**"
-            ]
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+//            fileTree(dir: it, exclude: [
+////                    '**/*'
+//            ]) +
 
-        }
+                    fileTree(dir: it, includes: [
+                            '**/*'
+                    ]
+                    )
+        }))
     }
 
+}
 
+sonar {
+    properties {
+        property "sonar.projectKey", "Cupid"
+        property "sonar.projectName", "Cupid"
+        property "sonar.token", "sqa_a4bda6f1edc9b15ba80600a5a766f249ed0f9b41"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.qualitygate.wait", true
+        property "sonar.gradle.skipCompile", true
+        property "sonar.coverage.inclusions", [
+                'src/main/java/business/*'
+        ]
+        property "sonar.coverage.exclusions", [
+                '/src/main/java/persistence/*'
+        ]
+
+//        property "sonar.coverage.exclusions", [
+//                "**/config/**",
+//                "**/controller/**",
+//                "**/domain/**",
+//                "**/external/**",
+//                "**/persistence/**"
+//        ]
+    }
 }

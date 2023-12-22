@@ -86,8 +86,6 @@ i
 9src/main/java/cupid/main/domain/adapter/SwipeAdapter.java,9\b\9b88168dd167652c1be7dbdb8573fa4434fd891e
 h
 8src/main/java/cupid/main/domain/adapter/UserAdapter.java,4\2\42919cd99d4de7016f332d5b366d99225ea37727
-s
-Csrc/main/java/cupid/main/domain/domain_action/UserDomainAction.java,b\2\b2be0675e35f9ba8e4302f8685cd49f4f157f6f6
 h
 8src/main/java/cupid/main/persistence/iJpa/iMatchJpa.java,4\7\47d91301d24bdf1044cf49d66f7c8b2276d16511
 y
