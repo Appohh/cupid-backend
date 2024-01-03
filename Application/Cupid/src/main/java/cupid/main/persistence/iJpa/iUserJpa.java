@@ -1,5 +1,6 @@
 package cupid.main.persistence.iJpa;
 
+import cupid.main.domain.Entity.Appearance;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,9 +20,8 @@ public interface iUserJpa extends JpaRepository<User, Integer> {
     @Query("SELECT u.password FROM User u WHERE u.email = :email")
     Optional<String> findPasswordByEmail(@Param("email") String email);
 
-    @Query("SELECT u FROM User u WHERE u.gender = :#{#pref.gender}")
-    List<User> findAllByPreference(@Param("pref") Preference p);
-
+    @Query("SELECT u FROM User u INNER JOIN Appearance a ON u.id = a.userId INNER JOIN Preference p ON a.bodyType = p.bodyType AND a.ethnicity = p.ethnicity AND a.gender = p.gender WHERE p = :pref")
+    List<User> findAllByBodyEthnicityGender(@Param("pref") Preference p);
 
 
 }

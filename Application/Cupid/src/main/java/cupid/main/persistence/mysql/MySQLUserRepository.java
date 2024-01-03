@@ -2,12 +2,15 @@ package cupid.main.persistence.mysql;
 
 import cupid.main.config.Security;
 import cupid.main.domain.Dto.User.CreateUser;
+import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.persistence.iJpa.iUserJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @Profile("mysql")
@@ -74,4 +77,10 @@ public class MySQLUserRepository implements UserAdapter  {
     public String getUserHashAndSalt(String email) {
         return jpa.findPasswordByEmail(email).get();
     }
+
+    @Override
+    public List<User> getUsersByPref(Preference preference) {
+        return jpa.findAllByBodyEthnicityGender((preference));
+    }
+
 }

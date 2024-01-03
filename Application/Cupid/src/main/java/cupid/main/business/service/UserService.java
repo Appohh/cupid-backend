@@ -23,4 +23,6 @@ public interface UserService {
     boolean userFilledAppearance(User user);
 
     Appearance updateAppearance(UpdateAppearance updateAppearance);
+
+
 }

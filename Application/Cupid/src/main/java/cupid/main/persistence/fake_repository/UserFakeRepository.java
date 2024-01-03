@@ -3,6 +3,7 @@ package cupid.main.persistence.fake_repository;
 import cupid.main.config.Security;
 import cupid.main.config.custom_exceptions.NotFoundException;
 import cupid.main.domain.Dto.User.CreateUser;
+import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.UserAdapter;
 import lombok.AllArgsConstructor;
@@ -84,5 +85,10 @@ public class UserFakeRepository implements UserAdapter {
     public String getUserHashAndSalt(String email) {
         User user = getUserByEmail(email);
         return user.getPassword();
+    }
+
+    @Override
+    public List<User> getUsersByPref(Preference preference) {
+        return null;
     }
 }
