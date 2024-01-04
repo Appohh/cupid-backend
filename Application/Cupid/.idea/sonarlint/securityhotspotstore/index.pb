@@ -201,3 +201,7 @@ Dsrc/main/java/cupid/main/domain/Dto/Appearance/UpdateAppearance.java,5\d\5d8a4
 Msrc/main/java/cupid/main/controller/dto/Appearance/GetAppearanceResponse.java,1\7\17e675fb0ec400eba13fa6fc0753cbf02c99caa0
 
 Osrc/main/java/cupid/main/controller/dto/Appearance/UpdateAppearanceRequest.java,d\8\d8a7a69c50606251a65fc742f2580a5d22c62ddf
+j
+:src/main/java/cupid/main/domain/adapter/ForYouAdapter.java,8\f\8f94710dafcd073ff2ec88e75dd02f43d41b5a00
+i
+9src/main/java/cupid/main/controller/ForYouController.java,f\a\fa2bfafe7707d41d095275e7b648b740a7cdf9b1
