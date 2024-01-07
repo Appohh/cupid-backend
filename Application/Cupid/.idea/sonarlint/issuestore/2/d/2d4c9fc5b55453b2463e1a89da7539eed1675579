@@ -1,3 +1,5 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Í§„ûÿÿÿÿ
-g	java:S116"RRename this field "Matches" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õªŒ€
+g	java:S116"RRename this field "Matches" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³Ñõå
+]
+java:S1128";Remove this unused import 'cupid.main.domain.Entity.Match'.(âÛôøÿÿÿÿ8İ¸ø§Î1

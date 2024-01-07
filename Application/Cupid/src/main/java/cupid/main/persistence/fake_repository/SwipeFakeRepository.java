@@ -49,4 +49,13 @@ public class SwipeFakeRepository implements SwipeAdapter {
 
         return foundSwipes;
     }
+
+    @Override
+    public Swipe getSwipeRightByPair(Integer origin, Integer target) {
+        return null;
+    }
+
+    @Override
+    public void deleteSwipeById(Integer id) {
+    }
 }

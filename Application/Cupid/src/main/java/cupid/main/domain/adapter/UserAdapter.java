@@ -14,6 +14,7 @@ public interface UserAdapter {
     User getUserByEmail(String email);
     String getUserHashAndSalt(String email);
     List<User> getUsersByPref(Preference preference);
+    List<User> getUsersById(List<Integer> userIds);
 
 
 }

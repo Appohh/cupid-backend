@@ -7,5 +7,8 @@ import java.util.List;
 public interface SwipeAdapter {
     Swipe createSwipe(Swipe swipe);
     List<Swipe> getSwipesByUserId(Integer userId);
+    Swipe getSwipeRightByPair(Integer origin, Integer target);
+
+    void deleteSwipeById(Integer id);
 
 }

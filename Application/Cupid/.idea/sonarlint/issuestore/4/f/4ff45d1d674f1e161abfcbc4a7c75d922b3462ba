@@ -1,4 +1,4 @@
 
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ Ÿð
-l	java:S116"XRename this field "origin_userId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï²Ž
-r	java:S116"XRename this field "target_userId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ï©üûÿÿÿÿ
+m	java:S116"XRename this field "origin_userId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öþý¾
+r	java:S116"XRename this field "target_userId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(þÔ±Œúÿÿÿÿ

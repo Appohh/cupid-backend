@@ -1,5 +1,6 @@
 package cupid.main.business.impl;
 
+import cupid.main.domain.Entity.User;
 import cupid.main.domain.adapter.MatchAdapter;
 import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.business.service.MatchService;
@@ -9,7 +10,11 @@ import cupid.main.domain.Entity.Match;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Service
 @AllArgsConstructor
 public class MatchServiceImpl implements MatchService {
@@ -39,7 +44,15 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public List<Match> getMatchesByUserId(Integer userId) {
-        return matchRepository.getMatchesByUserId(userId);
+    public List<User> getMatchesByUserId(Integer userId) {
+        List<Match> foundMatches = matchRepository.getMatchesByUserId(userId);
+        List<Integer> targetUsers = foundMatches.stream()
+                .flatMap(match -> Stream.of(match.getUserId1(), match.getUserId2()))
+                .filter(id -> !id.equals(userId))
+                .distinct()
+                .collect(Collectors.toList());
+
+
+        return userRepository.getUsersById(targetUsers);
     }
 }

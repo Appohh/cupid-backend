@@ -1,3 +1,5 @@
 
-R
-java:S4973"<Strings and Boxed types should be compared using "equals()".(Ğä‡·
+Y
+java:S4973"<Strings and Boxed types should be compared using "equals()".(Ğä‡·8¿ñÛ§Î1
+o
+java:S62045"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ì·æ§Î1

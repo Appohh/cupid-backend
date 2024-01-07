@@ -6,6 +6,7 @@ import cupid.main.domain.Dto.Match.CreateMatchResponse;
 import cupid.main.domain.Dto.Match.GetMatchResponse;
 import cupid.main.domain.Dto.Match.GetMatchesByUserIdResponse;
 import cupid.main.domain.Entity.Match;
+import cupid.main.domain.Entity.User;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,14 +21,12 @@ import java.util.List;
 public class MatchController {
     private final MatchService matchService;
 
-    @PostMapping()
+    @PostMapping("/create")
     public ResponseEntity<CreateMatchResponse> createMatch(@RequestBody @Valid CreateMatchRequest request) {
         Match matchCreated = matchService.createMatch(
                 Match.builder()
-                        .id(null)
                         .userId1(request.getUserId1())
                         .userId2(request.getUserId2())
-                        .timestamp(null)
                         .build()
         );
 
@@ -38,9 +37,9 @@ public class MatchController {
 
     @GetMapping("{id}")
     public ResponseEntity<GetMatchesByUserIdResponse> getMatchesByUserId(@PathVariable(value = "id") int id) {
-        List<Match> matchesFound = matchService.getMatchesByUserId(id);
+        List<User> matchingUsersFound = matchService.getMatchesByUserId(id);
 
-        GetMatchesByUserIdResponse response = GetMatchesByUserIdResponse.builder().Matches(matchesFound).build();
+        GetMatchesByUserIdResponse response = GetMatchesByUserIdResponse.builder().Matches(matchingUsersFound).build();
 
         return ResponseEntity.ok().body(response);
     }

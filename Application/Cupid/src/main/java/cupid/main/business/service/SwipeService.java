@@ -8,4 +8,7 @@ import java.util.List;
 public interface SwipeService {
     Swipe createSwipe(Swipe swipe);
     List<Swipe> getSwipesByUserId(Integer id);
+    Boolean checkMatch(Integer origin, Integer target);
+
+    void deleteSwipeById(Integer id);
 }

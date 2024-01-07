@@ -91,4 +91,9 @@ public class UserFakeRepository implements UserAdapter {
     public List<User> getUsersByPref(Preference preference) {
         return null;
     }
+
+    @Override
+    public List<User> getUsersById(List<Integer> userIds) {
+        return null;
+    }
 }

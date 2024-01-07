@@ -83,4 +83,9 @@ public class MySQLUserRepository implements UserAdapter  {
         return jpa.findAllByBodyEthnicityGender((preference));
     }
 
+    @Override
+    public List<User> getUsersById(List<Integer> userIds) {
+        return jpa.findAllById(userIds);
+    }
+
 }
