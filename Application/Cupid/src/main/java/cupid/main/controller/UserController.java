@@ -39,6 +39,15 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PostMapping("createAdmin")
+    public ResponseEntity<CreateUserResponse> createAdmin(@RequestBody @Valid CreateUserRequest request) {
+        request.setLocationId(123);
+        User createdUser = userService.createUser(CreateUser.fromRequest(request));
+        CreateUserResponse response = CreateUserResponse.builder().id(createdUser.getId()).build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
     @GetMapping("{id}")
     @PreAuthorize("hasRole(1)")
     public ResponseEntity<GetUserResponse> getUser(@PathVariable(value = "id") int id) {
@@ -119,6 +128,12 @@ public class UserController {
     @GetMapping("/verificationStatus/{token}")
     public ResponseEntity<Integer> checkVerificationStatus(@PathVariable(value = "token") String token) {
         Integer status = verifyService.checkVerificationStatus(token);
+        return ResponseEntity.ok().body(status);
+    }
+
+    @GetMapping("/referral/{code}")
+    public ResponseEntity<Integer> checkReferral(@PathVariable(value = "code") String code) {
+        Integer status = userService.validateReferralCode(code);
         return ResponseEntity.ok().body(status);
     }
 }

@@ -25,4 +25,5 @@ public interface UserService {
     Appearance updateAppearance(UpdateAppearance updateAppearance);
 
 
+    Integer validateReferralCode(String code);
 }

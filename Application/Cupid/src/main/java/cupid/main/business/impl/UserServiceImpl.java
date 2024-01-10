@@ -6,8 +6,7 @@ import cupid.main.config.security.token.impl.AccessTokenImpl;
 import cupid.main.domain.Dto.Appearance.UpdateAppearance;
 import cupid.main.domain.Dto.Role.CreateRole;
 import cupid.main.domain.Entity.Appearance;
-import cupid.main.domain.adapter.AppearanceAdapter;
-import cupid.main.domain.adapter.PreferenceAdapter;
+import cupid.main.domain.adapter.*;
 import cupid.main.business.service.UserService;
 import cupid.main.config.custom_exceptions.AlreadyExistException;
 import cupid.main.config.custom_exceptions.NotFoundException;
@@ -16,8 +15,6 @@ import cupid.main.domain.Dto.Preference.UpdatePreference;
 import cupid.main.domain.Dto.User.CreateUser;
 import cupid.main.domain.Entity.Preference;
 import cupid.main.domain.Entity.User;
-import cupid.main.domain.adapter.RoleAdapter;
-import cupid.main.domain.adapter.UserAdapter;
 import cupid.main.domain.Dto.User.UserLogin;
 import cupid.main.domain.other.ImageService;
 import jakarta.transaction.Transactional;
@@ -34,6 +31,7 @@ public class UserServiceImpl implements UserService {
     PreferenceAdapter preferenceRepository;
     RoleAdapter roleAdapter;
     AppearanceAdapter appearanceRepository;
+    ReferralAdapter referralRepository;
     AccessTokenEncoderDecoderImpl accessToken;
     ImageService imageService;
 
@@ -141,6 +139,11 @@ public class UserServiceImpl implements UserService {
                 .ethnicity(updateAppearance.getEthnicity())
                 .build();
         return appearanceRepository.updateAppearance(newAppearance);
+    }
+
+    @Override
+    public Integer validateReferralCode(String code) {
+        return referralRepository.validateRefferalCode(code);
     }
 
 }

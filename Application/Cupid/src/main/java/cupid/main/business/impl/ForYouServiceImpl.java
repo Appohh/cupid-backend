@@ -42,10 +42,6 @@ public class ForYouServiceImpl implements ForYouService {
                 .toList();
 
 
-
-
-
-
         return notSwipedUsers;
     }
 }

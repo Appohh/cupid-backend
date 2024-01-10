@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.mysql:mysql-connector-j:8.2.0'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 }
@@ -75,11 +76,8 @@ sonar {
         property "sonar.host.url", "http://localhost:9000"
         property "sonar.qualitygate.wait", true
         property "sonar.gradle.skipCompile", true
-        property "sonar.coverage.inclusions", [
-                'src/main/java/business/*'
-        ]
         property "sonar.coverage.exclusions", [
-                '/src/main/java/persistence/*'
+                'src/main/java/**/persistence/**'
         ]
 
 //        property "sonar.coverage.exclusions", [

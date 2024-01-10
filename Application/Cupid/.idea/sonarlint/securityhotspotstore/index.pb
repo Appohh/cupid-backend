@@ -205,3 +205,13 @@ j
 :src/main/java/cupid/main/domain/adapter/ForYouAdapter.java,8\f\8f94710dafcd073ff2ec88e75dd02f43d41b5a00
 i
 9src/main/java/cupid/main/controller/ForYouController.java,f\a\fa2bfafe7707d41d095275e7b648b740a7cdf9b1
+p
+@src/test/java/cupid/main/business/impl/SwipeServiceImplTest.java,3\0\30a48db17e0b091a207141c54ad6820d9fb8d257
+l
+<src/main/java/cupid/main/domain/adapter/ReferralAdapter.java,d\f\df110c826a177a9d778af4006d60a0f99e82253e
+d
+4src/main/java/cupid/main/domain/Entity/Referral.java,7\3\7345865d968f0a617121b571284ca128d87beff1
+k
+;src/main/java/cupid/main/persistence/iJpa/iReferralJpa.java,8\7\87b0b1446f229d232cbb6317afd5aecca8140bff
+w
+Gsrc/main/java/cupid/main/persistence/mysql/MySQLReferralRepository.java,d\e\deed92a8b7566536d9fa8f4010a93f57da2bb650

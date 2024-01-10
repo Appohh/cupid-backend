@@ -29,7 +29,6 @@ public class SwipeServiceImpl implements SwipeService {
         }
 
         return swipeRepository.createSwipe(swipe);
-
     }
 
     @Override
