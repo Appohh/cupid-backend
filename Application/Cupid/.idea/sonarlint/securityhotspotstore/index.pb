@@ -215,3 +215,5 @@ k
 ;src/main/java/cupid/main/persistence/iJpa/iReferralJpa.java,8\7\87b0b1446f229d232cbb6317afd5aecca8140bff
 w
 Gsrc/main/java/cupid/main/persistence/mysql/MySQLReferralRepository.java,d\e\deed92a8b7566536d9fa8f4010a93f57da2bb650
+d
+4src/main/java/cupid/main/config/WebSocketConfig.java,d\c\dc9a90aaa872ccc23f2abbf844045a930e6d0a5a

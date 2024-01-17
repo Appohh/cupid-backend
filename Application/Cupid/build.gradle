@@ -72,7 +72,7 @@ sonar {
     properties {
         property "sonar.projectKey", "Cupid"
         property "sonar.projectName", "Cupid"
-        property "sonar.token", "sqa_a4bda6f1edc9b15ba80600a5a766f249ed0f9b41"
+        property "sonar.token", "sqp_c951a52e1fee00c697a2bde31939fdfd89f70c99"
         property "sonar.host.url", "http://localhost:9000"
         property "sonar.qualitygate.wait", true
         property "sonar.gradle.skipCompile", true
