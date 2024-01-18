@@ -70,7 +70,7 @@ class SwipeServiceImplTest {
     @Test
     void createSwipe_validSwipe_createsSwipe() {
         // Arrange
-        Swipe swipe = new Swipe(null, 2, 1, anyInt(), null); // Example swipe object
+        Swipe swipe = new Swipe(null, 2, 1, anyInt(), null);
 
         // Mock userRepository to return a user for both origin and target userIds
         when(userRepository.getUserById(1)).thenReturn(mockUser);

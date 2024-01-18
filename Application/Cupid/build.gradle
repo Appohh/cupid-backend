@@ -55,15 +55,15 @@ jacocoTestReport {
 
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
-//            fileTree(dir: it, exclude: [
-////                    '**/*'
-//            ]) +
-
-                    fileTree(dir: it, includes: [
-                            '**/*'
-                    ]
-                    )
+            fileTree(dir: it, exclude: [
+                    '**/config/**',
+                    '**/controller/**',
+                    '**/domain/**',
+                    '**/external/**',
+                    '**/persistence/**'
+            ])
         }))
+
     }
 
 }
@@ -77,7 +77,12 @@ sonar {
         property "sonar.qualitygate.wait", true
         property "sonar.gradle.skipCompile", true
         property "sonar.coverage.exclusions", [
-                'src/main/java/**/persistence/**'
+                'src/main/java/cupid/main/controller/**',
+                'src/main/java/cupid/main/domain/**',
+                'src/main/java/cupid/main/persistence/**',
+                'src/main/java/cupid/main/config/**',
+                'src/main/java/cupid/main/external/**',
+                'src/main/java/cupid/main/Main.java'
         ]
 
 //        property "sonar.coverage.exclusions", [

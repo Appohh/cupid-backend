@@ -100,7 +100,7 @@ class UserServiceImplTest {
      * @see UserServiceImpl#createUser(CreateUser)
      */
     @Test
-    public void createUser_shouldThrowAlreadyExistExceptionIfUserEmailAlreadyExist() throws Exception {
+    void createUser_shouldThrowAlreadyExistExceptionIfUserEmailAlreadyExist() throws Exception {
         // Arrange
         CreateUser createUser = new CreateUser("t", "g", "1999-01-01", "ja@kf.com", "061234567", 1, "test123", 1, "test.png", "test", 1);
 
@@ -120,7 +120,7 @@ class UserServiceImplTest {
      * @see UserServiceImpl#getUserById(Integer)
      */
     @Test
-    public void getUserById_shouldReturnTheUserWithTheAppropriateId() throws Exception {
+    void getUserById_shouldReturnTheUserWithTheAppropriateId() throws Exception {
         // Arrange
         PreferenceAdapter mockPreferenceRepo = mock(PreferenceAdapter.class);
 
@@ -303,7 +303,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void testUpdateUserPreference() {
+    void testUpdateUserPreference() {
         // Arrange
         User user = new User();
         user.setPreferenceId(1);
@@ -334,34 +334,54 @@ class UserServiceImplTest {
         assertEquals(updatePreference.getEthnicity(), result.getEthnicity());
     }
 
+    @Test
+    void testAuthenticateUser_UserNotFound() {
+        // Arrange
+        UserLogin attempt = new UserLogin("nonexistent@example.com", "password");
 
-//    @Test
-//    void testAuthenticateUser() {
-//        // Arrange
-//        String mockToken = "MockToken";
-//
-//        UserLogin attempt = new UserLogin("test@example.com", "password");
-//        String storedHashAndSalt = "hashedPasswordAndSalt";
-//        User userMock = new User(1, "t", "g", "1999-01-01", "ja@kf.com", "061234567", 1, "test123", 1, 1, "test", "test");
-//
-//        when(userAdapter.userExist(attempt.getEmail(), "")).thenReturn(true);
-//        when(userAdapter.getUserHashAndSalt(attempt.getEmail())).thenReturn(storedHashAndSalt);
-//        when(userAdapter.getUserByEmail(attempt.getEmail())).thenReturn(userMock);
-//
-//        // Mocking Security.verifyPassword to return true
-//        when(Security.verifyPassword(attempt.getPassword(), storedHashAndSalt)).thenReturn(true);
-//
-//        // Mocking AccessTokenImpl and encode methods
-//        when(tokenEncoderDecoder.decode(mockToken)).thenReturn(accessToken);
-//
-//        // Act
-//        String result = userService.authenticateUser(attempt);
-//
-//        // Assert
-//        assertNotNull(result);
-//        // Add additional assertions if needed based on the logic in your application
-//    }
+        // Stubbing for the first if condition
+        when(userAdapter.userExist(attempt.getEmail(), "")).thenReturn(false);
 
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> userService.authenticateUser(attempt));
+        assertNotNull(exception.getMessage());
+    }
 
+    @Test
+    void testAuthenticateUser_InvalidPassword() {
+        // Arrange
+        UserLogin attempt = new UserLogin("test@example.com", "wrongPassword");
+
+        // Stubbing for the first if condition
+        when(userAdapter.userExist(attempt.getEmail(), "")).thenReturn(true);
+
+        // Stubbing for the second if condition
+        when(userAdapter.getUserHashAndSalt(attempt.getEmail())).thenReturn(Security.hashPassword("correctPassword"));
+
+        // Act & Assert
+        UnAuthorizedException exception = assertThrows(UnAuthorizedException.class, () -> userService.authenticateUser(attempt));
+        assertNotNull(exception.getMessage());
+    }
+
+    @Test
+    void testAuthenticateUser() {
+        // Arrange
+        UserLogin attempt = new UserLogin("test@example.com", "password");
+        User loggedUser = new User(1, "Alice", "Wonderland", "1998-03-20", "alice.wonderland@example.com", "1239874560", 1, "test789", null, 3, "test3", "test3");
+        Security securityMock = mock(Security.class);
+
+        when(userAdapter.userExist(attempt.getEmail(), "")).thenReturn(true);
+        when(userAdapter.getUserHashAndSalt(attempt.getEmail())).thenReturn(Security.hashPassword(attempt.getPassword()));
+        when(userAdapter.getUserByEmail(attempt.getEmail())).thenReturn(loggedUser);
+
+        AccessToken jwt = new AccessTokenImpl(loggedUser.getEmail(), loggedUser.getId(), List.of());
+        when(tokenEncoderDecoder.encode(any())).thenReturn("encodedToken"); // Use any() matcher
+
+        // Act
+        String result = userService.authenticateUser(attempt);
+
+        // Assert
+        assertNotNull(result);
+    }
 }
 

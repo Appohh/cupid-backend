@@ -46,7 +46,6 @@ public class ImageServiceImpl implements ImageService {
 
         } catch (IOException e) {
             // when wrong
-            e.printStackTrace();
             throw new FileSaveException("Something went wrong while saving file");
         }
     }

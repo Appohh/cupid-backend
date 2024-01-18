@@ -26,7 +26,7 @@ public class MatchServiceImpl implements MatchService {
             throw new NotFoundException("User 1 not found");
         }
         if (userRepository.getUserById(match.getUserId2()) == null) {
-            throw new NotFoundException("User 1 not found");
+            throw new NotFoundException("User 2 not found");
         }
         if(match.getUserId1() == match.getUserId2()) {
             throw new IllegalArgumentException("Cannot match same user");
