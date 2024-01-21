@@ -17,11 +17,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 @AllArgsConstructor
 public class ForYouController {
-    private final UserServiceImpl userService;
     private final ForYouServiceImpl forYouService;
 
     @GetMapping("/generateForYou/{userId}")
-    @PreAuthorize("hasRole(1)")
+    @PreAuthorize("hasRole(1) or hasRole(2)")
     public ResponseEntity<List<GetUserResponse>> generateForYou(@PathVariable("userId") @Valid int userId) {
 
         List<User> users = forYouService.GenerateForYouList(userId);

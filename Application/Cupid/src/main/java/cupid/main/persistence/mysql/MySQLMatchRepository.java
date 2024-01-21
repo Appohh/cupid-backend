@@ -30,4 +30,9 @@ public class MySQLMatchRepository implements MatchAdapter {
     public List<Match> getMatchesByUserId(Integer userId) {
         return jpa.findAllMatchesByUserId(userId);
     }
+
+    @Override
+    public Integer getTotalMatchesToday() {
+        return jpa.countAllByTimestamp();
+    }
 }

@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    @PreAuthorize("hasRole(1)")
+    @PreAuthorize("hasRole(1) or hasRole(2)")
     public ResponseEntity<GetUserResponse> getUser(@PathVariable(value = "id") int id) {
         User foundUser = userService.getUserById(id);
         GetUserResponse response = GetUserResponse.fromUser(foundUser);
@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @PostMapping("/updatePreference")
-    @PreAuthorize("hasRole(1)")
+    @PreAuthorize("hasRole(1) or hasRole(2)")
     public ResponseEntity<GetPreferenceResponse> updateUserPreference(@RequestBody @Valid UpdatePreferenceRequest request) {
         Preference preference = userService.updateUserPreference(userService.getUserById(request.getUserId()), UpdatePreference.fromRequest(request));
 
@@ -87,7 +87,7 @@ public class UserController {
     }
 
     @PostMapping("/updateAppearance")
-    @PreAuthorize("hasRole(1)")
+    @PreAuthorize("hasRole(1) or hasRole(2)")
     public ResponseEntity<GetAppearanceResponse> updateUserAppearance(@RequestBody @Valid UpdateAppearanceRequest request) {
         Appearance appearance = userService.updateAppearance(UpdateAppearance.fromRequest(request));
 

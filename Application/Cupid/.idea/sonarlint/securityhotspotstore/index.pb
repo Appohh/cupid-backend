@@ -217,3 +217,9 @@ w
 Gsrc/main/java/cupid/main/persistence/mysql/MySQLReferralRepository.java,d\e\deed92a8b7566536d9fa8f4010a93f57da2bb650
 d
 4src/main/java/cupid/main/config/WebSocketConfig.java,d\c\dc9a90aaa872ccc23f2abbf844045a930e6d0a5a
+q
+Asrc/test/java/cupid/main/business/impl/VerifyServiceImplTest.java,2\a\2a8b4533961f615d9c10bc94d2f81a71f23ab41a
+q
+Asrc/test/java/cupid/main/business/impl/ForYouServiceImplTest.java,3\0\30f3496c38173d9f163d7fb13794b3032efab991
+p
+@src/test/java/cupid/main/business/impl/MatchServiceImplTest.java,7\7\771089059f59f2d5e50cf2259a7a677f8371b3a3

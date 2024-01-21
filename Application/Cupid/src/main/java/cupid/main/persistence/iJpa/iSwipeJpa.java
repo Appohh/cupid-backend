@@ -13,5 +13,8 @@ public interface iSwipeJpa extends JpaRepository<Swipe, Integer> {
     List<Swipe> findSwipesByOriginUserId(Integer userId);
     @Query("SELECT s FROM Swipe s WHERE s.origin_userId = :origin AND s.target_userId = :target AND s.direction = 1")
     Swipe findSwipeRightByPair(Integer origin, Integer target);
+    @Query(value = "SELECT COUNT(*) FROM Swipe s WHERE DATE(s.timestamp) = CURRENT_DATE")
+    Integer countAllByTimestamp();
+    Integer countAllByDirectionIs(Integer direction);
 }
 

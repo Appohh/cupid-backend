@@ -56,4 +56,9 @@ public class MatchFakeRepository implements MatchAdapter {
     public List<Match> getMatchesByUserId(Integer userId) {
         return null;
     }
+
+    @Override
+    public Integer getTotalMatchesToday() {
+        return null;
+    }
 }

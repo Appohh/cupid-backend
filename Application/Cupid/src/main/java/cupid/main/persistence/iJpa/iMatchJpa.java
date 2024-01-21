@@ -15,4 +15,7 @@ public interface iMatchJpa  extends JpaRepository<Match, Integer> {
 
     @Query("SELECT m FROM Match m WHERE m.userId1 = :userId OR m.userId2 = :userId")
     List<Match> findAllMatchesByUserId(@Param("userId") Integer userId);
+
+    @Query(value = "SELECT COUNT(*) FROM Match m WHERE DATE(m.timestamp) = CURRENT_DATE")
+    Integer countAllByTimestamp();
 }

@@ -28,6 +28,7 @@ public class MailServiceImpl implements MailService {
             return true;
         } catch (Exception e) {
             return false;
-        }    }
+        }
+    }
 }
 

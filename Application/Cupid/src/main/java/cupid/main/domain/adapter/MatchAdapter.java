@@ -8,4 +8,5 @@ public interface MatchAdapter {
     Match createMatch(Match match);
     Match getMatchByPair(Integer userId1, Integer userId2);
     List<Match> getMatchesByUserId(Integer userId);
+    Integer getTotalMatchesToday();
 }

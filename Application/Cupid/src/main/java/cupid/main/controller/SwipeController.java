@@ -21,7 +21,7 @@ public class SwipeController {
     private final SwipeService swipeService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole(1)")
+    @PreAuthorize("hasRole(1) or hasRole(2)")
     public ResponseEntity<CreateSwipeResponse> createSwipe(@RequestBody @Valid CreateSwipeRequest request) {
         Swipe swipeCreated = swipeService.createSwipe(
                 Swipe.builder()
@@ -46,7 +46,7 @@ public class SwipeController {
     }
 
     @PostMapping("/checkMatch")
-    @PreAuthorize("hasRole(1)")
+    @PreAuthorize("hasRole(1) or hasRole(2)")
     public ResponseEntity<Boolean> checkSwipeRightMatch(@RequestBody @Valid CreateSwipeRequest request) {
         boolean result = swipeService.checkMatch(request.getOrigin_userId(), request.getTarget_userId());
         return ResponseEntity.ok().body(result);

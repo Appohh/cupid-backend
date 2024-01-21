@@ -58,4 +58,14 @@ public class SwipeFakeRepository implements SwipeAdapter {
     @Override
     public void deleteSwipeById(Integer id) {
     }
+
+    @Override
+    public Integer getTotalSwipesToday() {
+        return null;
+    }
+
+    @Override
+    public Integer getTotalSwipeLeftToday() {
+        return null;
+    }
 }

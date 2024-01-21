@@ -88,8 +88,7 @@ public class UserServiceImpl implements UserService {
         User loggedUser = userRepository.getUserByEmail(attempt.getEmail());
 
         List<Integer> roles = new ArrayList<>();
-//        roles.add(roleAdapter.getRole(loggedUser.getId()));
-        roles.add(1);
+        roles.add(roleAdapter.getRole(loggedUser.getId()));
         AccessTokenImpl jwt = new AccessTokenImpl(loggedUser.getEmail(), loggedUser.getId(), roles);
 
         return accessToken.encode(jwt);

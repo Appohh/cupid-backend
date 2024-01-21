@@ -35,4 +35,14 @@ public class MySQLSwipeRepository implements SwipeAdapter {
     public void deleteSwipeById(Integer id) {
         jpa.deleteById(id);
     }
+
+    @Override
+    public Integer getTotalSwipesToday() {
+        return jpa.countAllByTimestamp();
+    }
+
+    @Override
+    public Integer getTotalSwipeLeftToday() {
+        return jpa.countAllByDirectionIs(0);
+    }
 }
